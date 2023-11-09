@@ -6,8 +6,8 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: false,
-      unique: true
+      required: true,
+      unique: true,
     },
     email: {
       type: String,
@@ -19,7 +19,34 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true
-    }
+    },
+
+    country: {
+      
+      type: String,
+      required: true
+
+    },
+
+    favoriteBand: [{
+      
+      
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref:"Band"
+    
+    
+    }],
+
+    followed: [{
+
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref:"User"
+
+
+
+
+    }]
+
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
