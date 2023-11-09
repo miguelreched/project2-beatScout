@@ -1,32 +1,24 @@
 const { Schema, model } = require("mongoose");
 
 const bandSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 
-    name:{
+  genre: [String],
 
-        type: String,
-        required: true,
-        unique: true,
-       
-    
-    },
+  info: {
+    type: String,
+    required: true,
+  },
 
-    genre: [String],
+  socialmedia: [String],
 
-    info: {
-
-        type: String,
-        required: true
-
-    },
-
-    socialmedia: [String],
-
-    image: String,
-       
-
-})
+  image: String,
+});
 
 const Band = model("Band", bandSchema);
 
-module.exports = Band
+module.exports = Band;

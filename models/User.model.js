@@ -14,43 +14,35 @@ const userSchema = new Schema(
       required: true,
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     password: {
       type: String,
-      required: true
+      required: true,
     },
 
     country: {
-      
       type: String,
-      required: true
-
+      required: true,
     },
 
-    favoriteBand: [{
-      
-      
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref:"Band"
-    
-    
-    }],
+    favoriteBand: [
+      {
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref:"Band"
+      },
+    ],
 
-    followed: [{
-
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref:"User"
-
-
-
-
-    }]
-
+    followed: [
+      {
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref:"User"
+      },
+    ],
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-    timestamps: true
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
   }
 );
 
