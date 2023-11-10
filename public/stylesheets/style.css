@@ -10,3 +10,51 @@ a {
 h1 {
   color: 15px;
 }
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url("/public/images/login\ image.jpg"); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#content {
+  text-align: center;
+  color: #ffffff; 
+}
+
+#logo {
+  max-width: 100px;
+  margin-bottom: 20px; 
+}
+
+form {
+  background: rgba(187, 18, 162, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50; /* Color de fondo del botón, ajusta según tu diseño */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
