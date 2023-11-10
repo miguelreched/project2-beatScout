@@ -20,7 +20,8 @@ const path = require("path");
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/name-of-your-app";
+const MONGO_URI = 
+process.env.MONGO_URI || "mongodb://127.0.0.1:27017/name-of-your-app";
 
 // Middleware configuration
 module.exports = (app) => {

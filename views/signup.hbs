@@ -9,7 +9,7 @@
 
 
 
-        <form action ="/signup"  method=" post">
+        <form action ="/signup"  method="post">
             <label for="username">username:</label>
             <input type="text" name="username"  id="username" required>
             <br>
@@ -20,7 +20,7 @@
 
 
             <label for="email">email:</label>
-            <input type="email" name="username"  id="email" required>
+            <input type="email" name="email"  id="email" required>
             <br>
 
             <label for="password">password:</label>
@@ -28,6 +28,13 @@
             <br>
 
             <button type="submit">Register</button>
+
+
+    {{#if this.errMess}}
+
+      <p class="error">{{this.errMess}}</p>
+
+    {{/if}}
 
             
 
