@@ -7,23 +7,23 @@ a {
   color: #00b7ff;
 }
 
-h1 {
-  color: 15px;
-}
 
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-image: url("/public/images/login\ image.jpg"); 
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+nav {
+  background-color: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around; /* Esto distribuirá los elementos a lo largo de la fila */
+  align-items: center; /* Esto centrará verticalmente los elementos */
+  padding: 10px;
 }
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
 
 #content {
   text-align: center;
@@ -31,30 +31,49 @@ body {
 }
 
 #logo {
-  max-width: 100px;
+  max-width: 150px;
   margin-bottom: 20px; 
 }
 
-form {
-  background: rgba(187, 18, 162, 0.7);
+#login-form {
+  width: 300px;
+  margin: 20px auto;
   padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  background-color: whitesmoke;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+#login-form label {
+  color: black; 
+  font-weight: bold;
+  text-align: left;  
+  display: inline-block;
+  width: 80px; 
+  margin-bottom: 15px; 
 }
 
-button {
-  width: 100%;
+#login-form input {
+  width: calc(100% - 100px); 
+  padding: 8px; 
+  margin-bottom: 15px; 
+  border-radius: 5px; 
+}
+
+
+#login-form button {
+  background-color: black;
+  color: white; 
   padding: 10px;
-  background-color: #4CAF50; /* Color de fondo del botón, ajusta según tu diseño */
-  color: #fff; /* Color del texto del botón */
+  padding-left: 15px;
+  padding-right: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
+
+#login-form button:hover {
+  background-color: #9e2f9e; 
+}
+
