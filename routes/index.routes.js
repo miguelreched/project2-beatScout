@@ -7,7 +7,7 @@ router.get("/", (req, res, next) => {
 });
 
 const userRouter = require("./user.routes.js")
-router.use("/user",userRouter )
+router.use("/",userRouter )
 
 // const bandRouter = require("./band.routes.js")
 // router.use("/band",bandRouter)
