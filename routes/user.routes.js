@@ -14,8 +14,12 @@ router.post("/signup", async(req, res, next)=>{
     const{username, email, password, country} = req.body
 
     if (username === "" || email === "" || password === "" || country === ""){
-        console.log("All fields must be filled out")
+        // console.log("All fields must be filled out")
+        res.status(400).render("signup.hbs", {
+            errMess: "All fields must be filled out"
+        })
     }
+    return;
 })
 
 
