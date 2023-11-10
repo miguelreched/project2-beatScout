@@ -3,6 +3,12 @@ const User = require("../models/User.model")
 const router = express.Router()
 const bcrypt = require("bcryptjs")
 
+
+// GET "/" => renderizar vista principal de login
+router.get("/", (req, res, next)=>{
+    res.render("login.hbs")
+})
+
 // GET "/signup" => renderizar formulario de registro
 router.get("/signup", (req, res, next)=>{
     res.render("signup.hbs")
@@ -20,7 +26,10 @@ router.post("/signup", async(req, res, next)=>{
         })
         return;
     }
-
+    else {
+        res.render("user/profile.hbs")
+    }
+    
     const passwordSeg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
 
     if(passwordSeg.test(password) === false){
