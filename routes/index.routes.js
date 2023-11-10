@@ -12,4 +12,7 @@ router.use("/",userRouter )
 const bandRouter = require("./band.routes.js")
 router.use("/",bandRouter)
 
+const othersRouter = require("./other-users.routes.js")
+router.use("/",othersRouter)
+
 module.exports = router;

@@ -12,8 +12,8 @@ a {
 nav {
   background-color: white;
   display: flex;
-  justify-content: space-around; /* Esto distribuirá los elementos a lo largo de la fila */
-  align-items: center; /* Esto centrará verticalmente los elementos */
+  justify-content: space-around;
+  align-items: center; 
   padding: 10px;
 }
 
@@ -25,9 +25,10 @@ nav {
 }
 
 
-#content {
+#main-container {
   text-align: center;
   color: #ffffff; 
+  
 }
 
 #logo {
@@ -39,7 +40,7 @@ nav {
   width: 300px;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 10px;
   background-color: whitesmoke;
 }
