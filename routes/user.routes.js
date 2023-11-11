@@ -49,7 +49,7 @@ router.post("/signup", async(req, res, next)=>{
 
         await User.create({username, email, password: cryptPassword , country})
 
-        res.redirect("profile.hbs")
+        res.redirect("/profile")
 
     }
     catch(err){
