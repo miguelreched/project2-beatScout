@@ -58,6 +58,13 @@ router.post("/signup", async(req, res, next)=>{
 })
 
 
+// GET "/" => renderizar vista principal de profile de usuario
+router.get("/profile", (req, res, next)=>{
+    res.render("user/profile.hbs")
+})
+
+
+
 
 
 
