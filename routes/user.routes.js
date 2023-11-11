@@ -26,11 +26,7 @@ router.post("/signup", async(req, res, next)=>{
         })
         return;
     }
-    else {
-        res.render("user/profile.hbs")
-    }
-    
-    const passwordSeg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
+     const passwordSeg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
 
     if(passwordSeg.test(password) === false){
         res.status(400).render("signup.hbs", {
@@ -51,7 +47,7 @@ router.post("/signup", async(req, res, next)=>{
         const salt = await bcrypt.genSalt(10)
         const cryptPassword = await bcrypt.hash(password, salt)
 
-        await User.create({username, email, password: cryptPassword, country})
+        await User.create({username, email, password: cryptPassword , country})
 
         res.redirect("/profile")
 
@@ -60,5 +56,23 @@ router.post("/signup", async(req, res, next)=>{
         next(err)
     }    
 })
+
+
+// GET "/" => renderizar vista principal de profile de usuario
+router.get("/profile", (req, res, next)=>{
+    res.render("user/profile.hbs")
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
