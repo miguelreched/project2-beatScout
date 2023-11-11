@@ -6,8 +6,6 @@ const bcrypt = require("bcryptjs")
 
 
 // GET /"add-bands" nos lleva a añadir  bandas a nuestra lista
-
-
 router.get ("/add-bands", (req, res, next)=> {
 
     res.render("band/add-bands.hbs")
