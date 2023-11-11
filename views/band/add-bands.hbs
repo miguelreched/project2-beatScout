@@ -3,7 +3,7 @@
 
 
 <h3>Add your favorite band</h3>
-<body>
+
 
     <div id="add-bands-container">
       
@@ -16,11 +16,11 @@
 
         <button>Upload image</button>
 
-        <form id="add-bands-form" action ="/"  method=" post">
+        <form id="add-bands-form" action ="/add-bands"  method=" post">
 
 
-            <label for="band-name">Band name:</label>
-            <input type="text" name="band-name"  id="band-name" required>
+            <label for="name">Band name:</label>
+            <input type="text" name="name"  id="band-name" required>
             <br>
 
             <label for="genre">Genre:</label>
@@ -28,25 +28,32 @@
 
           <br>
 
-            <label for="band-info">Band Info:</label>
-            <input type="text" name="band-info" id="band-info" required>
+            <label for="info">Band Info:</label>
+            <input type="text" name="info" id="band-info" required>
+            <br>
+
+             <label for="socialmedia">Social media:</label>
+            <input type="text" name="socialmedia" id="socialmedia" required>
             <br>
 
             <button type="submit">Submit</button>
 
+            {{#if this.errMess}}
+
+<p class="error">{{this.errMess}}</p>
+
+{{/if}}
+
     
         </form>
 
-         
+        
 
-
-
-
-        </div>
+     </div>
 
     </div>
 
-</body>
+
 
 
 
