@@ -9,6 +9,21 @@ router.get("/", (req, res, next)=>{
     res.render("login.hbs")
 })
 
+// POST (/profile) = recibir las credenciales del usuario, validarlo y crear una sesiòn activa
+
+router.post("/", async (req,res,next)=>{
+
+    console.log(req.body)
+
+    
+
+
+    // si todo bene
+    res.redirect("/profile")
+
+})
+
+
 // GET "/signup" => renderizar formulario de registro
 router.get("/signup", (req, res, next)=>{
     res.render("signup.hbs")
@@ -56,6 +71,11 @@ router.post("/signup", async(req, res, next)=>{
         next(err)
     }    
 })
+
+
+
+
+
 
 
 // GET "/" => renderizar vista principal de profile de usuario
