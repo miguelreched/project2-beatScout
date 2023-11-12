@@ -16,14 +16,18 @@
 
         <form id="login-form" action ="/"  method="post">
             <label for="username">username:</label>
-            <input type="text" name="username"  id="username" required>
+            <input type="text" name="username"  id="username">
             <br>
 
             <label for="password">password:</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" >
             <br>
 
             <button type="submit">log in</button>
+
+            {{#if this.errMess}}
+             <p class="error">{{this.errMess}}</p>
+            {{/if}}
 
     
         </form>

@@ -37,9 +37,28 @@ const userSchema = new Schema(
       {
         // type: mongoose.Schema.Types.ObjectId,
         // ref:"User"
-      },
+      },      
+
     ],
+
+    role: {
+
+      type: String,
+      enum:["user", "moderator"],
+      default: "user"
+
+    },
+
+    profilePic: String,
+
   },
+
+
+
+
+
+
+
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,

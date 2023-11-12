@@ -78,3 +78,9 @@ nav {
   background-color: #9e2f9e; 
 }
 
+.error{
+
+  color: blueviolet;
+  font-weight: bold;
+}
+
