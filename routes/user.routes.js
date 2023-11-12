@@ -63,47 +63,49 @@ router.post("/", async (req, res, next) => {
 
     }
 
-
+    //usuario validado
+    // crear una sesión activa
 
     const sessionInfo = {
 
       _id: foundUser._id,
       email: foundUser.email,
-      role: foundUser.role
 
     }
 
-
       req.session.user = sessionInfo
-
 
       req.session.save(()=>{
 
         res.redirect("/profile")
 
+
       })
 
-  }catch(error){
 
+
+    
+  }catch(error){
+    
     next (error)
   }
+  
 
-
-  // GET "/logout"  => cerrára la session
-
-  router.get("/logout", (req,res,next) =>{
-
-    req.session.destroy (()=>{
-
-      res.redirect("/")
-    })
-
-  })
-
-
+  
 });
 
 
+
+// GET "/" => cierra sesion del usuario
+
+router.get("/logout", (req,res,next) =>{
+
+  req.session.destroy (()=>{
+
+    res.redirect("/")
+  })
+
+})
 
 
 
@@ -157,9 +159,9 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-// GET "/" => renderizar vista principal de profile de usuario
-router.get("/profile", (req, res, next) => {
-  res.render("user/profile.hbs");
-});
+// // GET "/" => renderizar vista principal de profile de usuario
+// router.get("/profile", (req, res, next) => {
+//   res.render("user/profile.hbs");
+// });
 
 module.exports = router;

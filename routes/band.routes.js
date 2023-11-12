@@ -2,10 +2,21 @@ const express = require("express");
 const Band = require("../models/Band.model");
 const router = express.Router();
 
+const isUserLogged = require("../middlewares/user.middleware.js")
+
 // GET /"add-bands" nos lleva a añadir  bandas a nuestra lista
-router.get("/add-bands", (req, res, next) => {
-  res.render("band/add-bands.hbs");
-});
+// router.get("/add-bands", (req, res, next) => {
+//   res.render("band/add-bands.hbs");
+// });
+
+router.get("/add-bands",isUserLogged, (req,res,next)=>{
+    
+  res.render("band/add-bands.hbs")
+
+
+})
+
+
 
 // POST "/add-bands" => recibir los datos del formulario y crear banda en la DB
 
@@ -39,8 +50,16 @@ router.post("/add-bands", async (req, res, next) => {
 
 // GET "/favorite band" nos lleva a ver a nuestras bandas faoritas
 
-router.get("/favorite-bands", (req, res, next) => {
-  res.render("band/favorite-bands.hbs");
-});
+// router.get("/favorite-bands", (req, res, next) => {
+//   res.render("band/favorite-bands.hbs");
+// });
+
+
+router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
+    
+  res.render("band/favorite-bands.hbs")
+
+
+})
 
 module.exports = router;

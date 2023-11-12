@@ -3,6 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+
+body.login-page {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
 a {
   color: #00b7ff;
 }
@@ -27,8 +37,9 @@ nav {
 
 #main-container {
   text-align: center;
-  color: #ffffff; 
-  
+  color: #ffffff;
+  position: fixed;
+  z-index: 1; 
 }
 
 #logo {
@@ -36,7 +47,87 @@ nav {
   margin-bottom: 20px; 
 }
 
+#inside-container {
+  position: relative;
+}
+
 #login-form {
+  width: 300px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  position: absolute;
+  top: 320px;
+  left: 900px; 
+  transform: translate(-50%, -50%);
+}
+
+#logo {
+  max-width: 200px; 
+  margin-right: 20px;
+}
+
+#inside-container img {
+  max-width: 100%;  
+  display: block;
+}
+
+#login-form label {
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  display: inline-block;
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+#login-form input {
+  width: calc(100% - 100px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+#login-form button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#login-form button:hover {
+  background-color: #9e2f9e;
+}
+
+.error {
+  color: blueviolet;
+  font-weight: bold;
+}
+
+
+
+
+#signup-link {
+  margin-top: 30px; 
+}
+
+
+/*! formulario signup */
+
+
+#sign-up-container{
+  text-align: center;
+  color: #ffffff; 
+  
+}
+
+#signup-form{
   width: 300px;
   margin: 20px auto;
   padding: 20px;
@@ -45,7 +136,7 @@ nav {
   background-color: whitesmoke;
 }
 
-#login-form label {
+#signup-form label {
   color: black; 
   font-weight: bold;
   text-align: left;  
@@ -54,7 +145,7 @@ nav {
   margin-bottom: 15px; 
 }
 
-#login-form input {
+#signup-form input {
   width: calc(100% - 100px); 
   padding: 8px; 
   margin-bottom: 15px; 
@@ -62,7 +153,7 @@ nav {
 }
 
 
-#login-form button {
+#signup-form button {
   background-color: black;
   color: white; 
   padding: 10px;
@@ -74,13 +165,7 @@ nav {
   font-weight: bold;
 }
 
-#login-form button:hover {
+#signup-form button:hover {
   background-color: #9e2f9e; 
-}
-
-.error{
-
-  color: blueviolet;
-  font-weight: bold;
 }
 

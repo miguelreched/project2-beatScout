@@ -3,18 +3,16 @@
 
 
 
-<body>
+<body class="login-page">
 
     <div id="main-container">
-        <img src="images/beat-scout-logo.jpg" alt="Logo" id="logo" width="200px">
-
+        <img src="images/beat-scout-logo.jpg" alt="Logo" id="logo" width="600px">
 
         <div id="inside-container">
 
-            <img src="images/login-image.jpg" alt="signup-image" width="600">
+            <img src="images/login-image.jpg" alt="signup-image" width="1000px">
 
-
-        <form id="login-form" action ="/"  method="post">
+            <form id="login-form" action="/" method="post">
             <label for="username">username:</label>
             <input type="text" name="username"  id="username">
             <br>
@@ -29,12 +27,14 @@
              <p class="error">{{this.errMess}}</p>
             {{/if}}
 
+                <p id="signup-link">
+                <span style="color: black;">Don’t you have an account?</span>
+                <strong><a href="/signup">Sign up</a></strong>
+            </p>
     
         </form>
 
-         <p>
-            <span style="color: black;">Don’t you have an account?</span>
-            <strong><a href="/signup">Sign up</a></p></strong>
+      
 
 
 

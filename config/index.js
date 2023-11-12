@@ -42,4 +42,27 @@ module.exports = (app) => {
 
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+
+  app.use(session({
+
+    secret: process.env.SESSION_SECRET,// esta es nuestra clave secreta para cifrar cookies
+
+    resave: false, //no guarda la sesion si no hay nada modificado
+
+    saveUninitialized:false, // no guarda sesiones sin datos(sin login)
+
+    cookie: {
+
+      maxAge: 1000 * 60 * 60 * 24 * 2 // tiempo de expiración de la cookie en la sesion
+
+    },
+    store: MongoStore.create({
+
+      mongoUrl: MONGO_URI,
+      ttl: 1000 * 60 * 60 * 24 * 2 // tiempo de expiración de sesion 
+    })
+
+  }))
+
+
 };

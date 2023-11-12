@@ -1,34 +1,19 @@
+//middleware =>  función  para loggeados
+
+function isUserLogged (req,res,next) {
+
+    if(req.session.user === undefined){
+
+        res.redirect("/")
 
 
-function isOn (req,res,next) {
+    } else{
 
-if (req.sessionuser === undefined) {
-
-res.redirect("/")
-
-
-} else{
-
-    next()
-}
-}
-
-function moderator(req,res,next ){
+        next()
+    }
 
 
-if(req.session.role === "moderator") {
-
- next()
-
-}else {
-
-    res.redirect("/")
-}
 
 }
-module.exports ={
 
-    isOn,
-    moderator
-
-}
+module.exports = isUserLogged

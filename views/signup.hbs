@@ -1,13 +1,16 @@
 
 <body>
 
-    <div id="content-sign-up">
+    <div id="sign-up-container">
         <img src="images/beat-scout-logo.jpg" alt="Logo" id="logo" width="200px">
 
 
+        <div id="inside-sign-up-container">
+
+            <img src="images/signup-image.jpg" alt="signup-image" width="600">
 
 
-        <form action ="/signup"  method="post">
+        <form id = "signup-form" action ="/signup"  method="post">
             <label for="username">username:</label>
             <input type="text" name="username"  id="username" required>
             <br>
@@ -39,10 +42,6 @@
     {{/if}}
 
             
-
-            
-
-            <a href="/profile"></a>
         </form>
    
 
