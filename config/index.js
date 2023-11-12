@@ -13,6 +13,8 @@ const cookieParser = require("cookie-parser");
 // https://www.npmjs.com/package/serve-favicon
 const favicon = require("serve-favicon");
 
+
+
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");
@@ -42,4 +44,16 @@ module.exports = (app) => {
 
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false, 
+    cookie:{
+      maxAge: 1000 * 60 * 60 * 24
+    },
+    store: MongoStore.create({
+      mongoUrl: MONGO_URI,
+      ttl: 60 * 60 * 24
+    })
+  }))
 };

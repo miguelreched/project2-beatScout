@@ -2,7 +2,7 @@
 
 function isOn (req,res,next) {
 
-if (req.sessionuser === undefined) {
+if (req.session.user === undefined) {
 
 res.redirect("/")
 
