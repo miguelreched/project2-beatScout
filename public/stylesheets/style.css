@@ -208,5 +208,160 @@ body.signup-page {
 
 #signup-form button:hover {
   background-color: #9e2f9e; 
+
+}
+
+
+
+/*! formulario add-bands */
+
+
+#add-bands-header {
+
+  margin-right: 400px !important
+}
+
+#add-bands-container {
+  text-align: center;
+  color: #ffffff;
+  position: fixed;
+  z-index: 1;
+  top: 55%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+#add-bands-form {
+  width: 90%; 
+  margin: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#add-bands-form label {
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#add-bands-form select {
+  width: 100%; 
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+#add-bands-form input {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+
+}
+
+
+
+#add-bands-form button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#upload-band-image button {
+  margin-left: 0; 
+}
+
+#add-bands-form button:hover {
+  background-color: #9e2f9e;
+}
+
+.error {
+  color: blueviolet;
+  font-weight: bold;
+}
+
+
+/*! formulario profile */
+
+
+#profile-container {
+  text-align: center;
+  color: #ffffff;
+  position: fixed;
+  z-index: 1;
+  top: 42%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+#profile-form {
+  width: 90%; 
+  margin: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#profile-form label {
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#profile-formselect {
+  width: 100%; 
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+#profile-form input {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+
+}
+
+
+
+#profile-form button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#upload-profile-image button {
+  margin-left: 0; 
+}
+
+#profile-form button:hover {
+  background-color: #9e2f9e;
+}
+
+.error {
+  color: blueviolet;
+  font-weight: bold;
 }
 

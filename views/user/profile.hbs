@@ -3,31 +3,33 @@
 
 
 <h3>This is your profile</h3>
-<body>
+
+
 
     <div id="profile-container">
-      
 
-        <div id="profile-inside-container">
-
-            
-        <label for="image">Profile Picture</label>
-        <input type="file" name="image">
-
-        <button>Upload image</button>
-
-        <form id="add-bands-form" action ="/profile"  method="post">
+        <form id="profile-form" action ="/profile"  method="post" style="margin-top": 20px;>
 
 
             <label for="user-name">Name:</label>
-            <input type="text" name="user-name"  id="user-name" required>
+            <input type="text" name="user-name"  id="user-name" >
             <br>
 
 
              <label for="user-country">Country:</label>
-            <input type="text" name="user-country"  id="user-country" required>
+            <input type="text" name="user-country"  id="user-country" >
             <br>
             <br>
+
+            <label for="image">Profile Picture</label>
+        <input type="file" name="image">
+        <br>
+        <br>
+
+        <button id="upload-profile-image">Upload image</button>
+
+        <br>
+        <br>
 
 
             <button type="submit">Submit</button>
@@ -40,11 +42,11 @@
 
 
 
-        </div>
+        
 
     </div>
 
-</body>
+
 
 
 

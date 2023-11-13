@@ -2,29 +2,42 @@
 
 
 
-<h3>Add your favorite band</h3>
+<h3 id="add-bands-header">Add your favorite band</h3>
 
 
     <div id="add-bands-container">
       
 
-        <div id="add-bands-inside-container">
-
+    
             
-        <label for="image">Band Picture</label>
-        <input type="file" name="image" required>
+        
 
-        <button>Upload image</button>
-
-        <form id="add-bands-form" action ="/add-bands"  method="post">
+        <form id="add-bands-form" action ="/add-bands"  method="post" style="margin-top": 20px;>
 
 
-            <label for="name">Band name:</label>
-            <input type="text" name="name"  id="band-name" >
+            <label for="name" style="width: 100px;">Band name:</label>
+            <input type="text" name="name" id="band-name">
             <br>
 
-            <label for="genre">Genre:</label>
-            <input type="text" name="genre"  id="genre" >
+            <label for="genre"style="width: 100px;">Genre:</label>
+            <select name="genre" id="genre" >
+              <option value="default"selected></option>
+              <option value="Rock">Rock</option>
+              <option value="Punk">Punk</option>
+              <option value="Pop">Pop</option>
+              <option value="Funk">Funk</option>
+              <option value="Disco">Disco</option>
+              <option value="R&B">R&B</option>
+              <option value="Hip-Hop">Hip-Hop</option>
+              <option value="Trip-Hop">Trip-Hop</option>
+              <option value="Electronic">Electronic</option>
+              <option value="Indie">Indie</option>
+              <option value="Dance">Dance</option>
+              <option value="Flamenco">Flamenco</option>
+              <option value="Reggaeton">Reggaeton</option>
+
+            </select>
+
 
           <br>
 
@@ -32,11 +45,30 @@
             <input type="text" name="info" id="band-info" >
             <br>
 
-             <label for="socialmedia">Social media:</label>
-            <input type="text" name="socialmedia" id="socialmedia" >
+             <label for="instagramUrl">Instagram: </label>
+            <input type="text" name="instagramUrl" id="instagramUrl" >
             <br>
 
-            <button type="submit">Submit</button>
+               <label for="facebookUrl">Facebook: </label>
+            <input type="text" name="facebookUrl" id="facebookUrl" >
+            <br>
+
+               <label for="spotifyUrl">Spotify: </label>
+            <input type="text" name="spotifyUrl" id="spotifyUrl">
+            <br>
+
+            <label for="image">Band Picture</label>
+        <input type="file" name="image" >
+        <br>
+
+        <button id="upload-band-image">Upload image</button>
+        <br>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+            <br>
+
+
 
             {{#if this.errMess}}
 
@@ -49,7 +81,7 @@
 
         
 
-     </div>
+     
 
     </div>
 
