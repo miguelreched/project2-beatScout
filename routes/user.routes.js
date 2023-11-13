@@ -51,7 +51,7 @@ router.post("/", async (req, res, next) => {
     // crear una sesión activa
 
     const sessionInfo = { 
-      
+
       _id: foundUser._id,
       email: foundUser.email,
     }
@@ -147,7 +147,9 @@ router.post("/signup", async (req, res, next) => {
 
     await User.create({ username, email, password: cryptPassword, country });
 
-    res.redirect("/home");
+    // opcionalmente pueden crear una sesión acá y luego redirijen a /home
+
+    res.redirect("/");
   } catch (err) {
     next(err);
   }
