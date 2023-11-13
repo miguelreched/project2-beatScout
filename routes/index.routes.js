@@ -21,4 +21,7 @@ router.use("/",othersRouter)
 const profileRouter = require("./profile.routes.js")
 router.use("/", profileRouter)
 
+const bandProfileRouter = require("./band-profile.routes.js")
+router.use("/", bandProfileRouter )
+
 module.exports = router;
