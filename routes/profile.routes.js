@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
 
+const uploader = require("../middlewares/cloudinary.middleware.js")
 
 const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 
@@ -11,7 +12,6 @@ const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 router.get("/home",isUserLogged, (req,res,next)=>{
     
     res.render("user/home.hbs")
-
 
 })
 
@@ -43,7 +43,21 @@ router.get("/")
 // })
 
 
+router.post("/profile-picture", uploader.single("image"), async(req, res, next)=>{
 
+console.log(req.file)
+
+try{
+    await User.findByIdAndUpdate(req.session.user._id), {
+        profilePic: req.file.path
+    }
+    res.redirect("/profile")
+} catch (err){
+    next (err)
+}
+
+
+})
 
 
 

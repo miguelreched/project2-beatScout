@@ -37,10 +37,21 @@
     
         </form> --}}
 
-         <p><strong>Name: {{this.userProfile.username}}</strong></p>
-        <p><strong>Country: {{this.userProfile.country}}</strong></p>
-        <img src="{{this.userProfile.username}}" alt="profile-pic" >
-                
+        <p>Name: {{this.userProfile.username}}</p>
+        <p>Country: {{this.userProfile.country}}</p>
+        
+        <img src="{{this.userProfile.profilePic}}" alt="profile-pic" width="200px">
+
+        <form action="/profile-picture" method="post" enctype="multipart/form-data">
+            <label for="image">Foto de perfil</label>
+            <input type="file" name="image">
+
+            <button>Subir imagen</button>
+
+
+
+        </form>
+
 
     </div>
 
