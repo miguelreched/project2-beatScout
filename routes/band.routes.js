@@ -2,7 +2,7 @@ const express = require("express");
 const Band = require("../models/Band.model");
 const router = express.Router();
 
-const isUserLogged = require("../middlewares/user.middleware.js")
+const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 
 // GET /"add-bands" nos lleva a añadir  bandas a nuestra lista
 // router.get("/add-bands", (req, res, next) => {

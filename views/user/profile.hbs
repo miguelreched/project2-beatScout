@@ -8,7 +8,7 @@
 
     <div id="profile-container">
 
-        <form id="profile-form" action ="/profile"  method="post" style="margin-top": 20px;>
+        {{!-- <form id="profile-form" action ="/profile"  method="post" style="margin-top": 20px;>
 
 
             <label for="user-name">Name:</label>
@@ -35,14 +35,12 @@
             <button type="submit">Submit</button>
 
     
-        </form>
+        </form> --}}
 
-         
-
-
-
-
-        
+         <p><strong>Name: {{this.userProfile.username}}</strong></p>
+        <p><strong>Country: {{this.userProfile.country}}</strong></p>
+        <img src="{{this.userProfile.username}}" alt="profile-pic" >
+                
 
     </div>
 

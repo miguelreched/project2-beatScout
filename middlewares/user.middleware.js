@@ -4,7 +4,7 @@ function isUserLogged (req,res,next) {
 
     if(req.session.user === undefined){
 
-        res.redirect("/")
+        res.redirect("/home")
 
 
     } else{
@@ -51,4 +51,4 @@ function isAdmin(req, res, next) {
 
 
 
-module.exports = isUserLogged, isAdmin
+module.exports = {isUserLogged, isAdmin}

@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/User.model");
 
 
-const isUserLogged = require("../middlewares/user.middleware.js")
-const isAdmin = require("../middlewares/user.middleware.js")
+const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
+
 
 // ruta privada ar ausuarios con sesiones activas
 
@@ -17,7 +18,7 @@ router.get("/home",isUserLogged, (req,res,next)=>{
 
 router.get("/profile",isUserLogged, (req,res,next)=>{
     
-    res.render("user/profile.hbs")
+
     User.findById(req.session.user._id)
     .then((response)=>{
         console.log(response)
