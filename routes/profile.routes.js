@@ -42,15 +42,17 @@ router.get("/")
 
 // })
 
+//actualizar la foto del usuario
+
 
 router.post("/profile-picture", uploader.single("image"), async(req, res, next)=>{
 
 console.log(req.file)
 
 try{
-    await User.findByIdAndUpdate(req.session.user._id), {
+    await User.findByIdAndUpdate(req.session.user._id, {
         profilePic: req.file.path
-    }
+    })
     res.redirect("/profile")
 } catch (err){
     next (err)

@@ -143,7 +143,7 @@ router.post("/signup", async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const cryptPassword = await bcrypt.hash(password, salt);
 
-    await User.create({ username, email, password: cryptPassword, country });
+    await User.create({ username, email, password: cryptPassword, country});
 
     // opcionalmente pueden crear una sesión acá y luego redirijen a /home
 

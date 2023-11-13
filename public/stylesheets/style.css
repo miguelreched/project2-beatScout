@@ -365,3 +365,17 @@ body.signup-page {
   font-weight: bold;
 }
 
+
+#form-profile-picture{
+
+  display: none;
+
+  
+}
+
+
+#form-profile-picture.display{
+
+  display: block;
+
+}

@@ -8,49 +8,47 @@
 
     <div id="profile-container">
 
-        {{!-- <form id="profile-form" action ="/profile"  method="post" style="margin-top": 20px;>
-
-
-            <label for="user-name">Name:</label>
-            <input type="text" name="user-name"  id="user-name" >
-            <br>
-
-
-             <label for="user-country">Country:</label>
-            <input type="text" name="user-country"  id="user-country" >
-            <br>
-            <br>
-
-            <label for="image">Profile Picture</label>
-        <input type="file" name="image">
-        <br>
-        <br>
-
-        <button id="upload-profile-image">Upload image</button>
-
-        <br>
-        <br>
-
-
-            <button type="submit">Submit</button>
-
-    
-        </form> --}}
-
+        
         <p>Name: {{this.userProfile.username}}</p>
         <p>Country: {{this.userProfile.country}}</p>
         
+        {{#if this.userProfile.profilePic}}
+           
         <img src="{{this.userProfile.profilePic}}" alt="profile-pic" width="200px">
 
-        <form action="/profile-picture" method="post" enctype="multipart/form-data">
-            <label for="image">Foto de perfil</label>
-            <input type="file" name="image">
+            {{/if}}
 
-            <button>Subir imagen</button>
+
+        {{#if this.userProfile.profilePic}}
+         <form  id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data"></form>
+        {{else}}
+         <form  id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data"></form>
+        {{/if}}
+        
+        <label for="image">Foto de perfil</label>
+        <input type="file" name="image">
+            
+
+
+
+            {{#if this.userProfile.profilePic}}
+             <button>Edit image</button>
+            
+
+            {{else}}
+            <button>Upload image</button>
+
+            {{/if}}
+            
+          
 
 
 
         </form>
+
+            {{#if this.userProfile.profilePic}}
+             <button id="show-form">Edit image</button>
+              {{/if}}
 
 
     </div>
