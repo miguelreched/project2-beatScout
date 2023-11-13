@@ -3,75 +3,60 @@ const User = require("../models/User.model");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
-
-
 // GET "/" => renderizar vista principal de login
 router.get("/", (req, res, next) => {
   res.render("login.hbs");
 });
 
-
 // POST (/profile) = recibir las credenciales del usuario, validarlo y crear una sesiòn activa
 
 router.post("/", async (req, res, next) => {
   console.log(req.body);
-  const {username, password} = req.body
+  const { username, password } = req.body;
 
   //validar que los campos estén llenos
 
-  if(username === "" || password === "") {
-    
+  if (username === "" || password === "") {
     // si todo bene
     res.status(400).render("index.hbs", {
-
-      errMess: "All fields must be filled"
-
+      errMess: "All fields must be filled",
     });
-    return // aqui detiene la ruta si no funciona
-
+    return; // aqui detiene la ruta si no funciona
   }
 
-  
-  try{
-    
+  try {
     // validar que el usuario exista
 
-    const foundUser = await User.findOne ( {username} )
+    const foundUser = await User.findOne({ username });
 
-    if(foundUser === null) {
-
+    if (foundUser === null) {
       res.status(400).render("index.hbs", {
-
-        errMess: "User doesn't exists"
-
-      })
-      return
-
+        errMess: "User doesn't exists",
+      });
+      return;
     }
 
     //validar que la contraseña sea la correcta
 
-    const isPasswordValid = await bcrypt.compare(password,foundUser.password)
-    console.log("isPasswordValid", isPasswordValid)
-    if(isPasswordValid == false) {
-
+    const isPasswordValid = await bcrypt.compare(password, foundUser.password);
+    console.log("isPasswordValid", isPasswordValid);
+    if (isPasswordValid == false) {
       res.status(400).render("index.hbs", {
-
-        errMess: "Password not valid"
-      })
-      return
-
+        errMess: "Password not valid",
+      });
+      return;
     }
 
     //usuario validado
     // crear una sesión activa
 
-    const sessionInfo = {
-
+    const sessionInfo = { 
+      
       _id: foundUser._id,
       email: foundUser.email,
-
     }
+
+    
 
       req.session.user = sessionInfo
 
@@ -110,7 +95,6 @@ router.get("/logout", (req,res,next) =>{
 
 
 //! Aqui empieza el signup
-
 
 // GET "/signup" => renderizar formulario de registro
 router.get("/signup", (req, res, next) => {
