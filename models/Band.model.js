@@ -14,7 +14,9 @@ const bandSchema = new Schema({
     required: true,
   },
 
-  socialMedia: [String],
+  instagramUrl: String,
+  facebook: String,
+  spotify: String,
 
   image: String,
 });

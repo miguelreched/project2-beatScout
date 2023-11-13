@@ -14,6 +14,14 @@ router.get("/home",isUserLogged, (req,res,next)=>{
 })
 
 
+router.get("/profile",isUserLogged, (req,res,next)=>{
+    
+    res.render("user/profile.hbs")
+
+
+})
+
+
 // const isUserRegistered = require("../middlewares/user.middleware.js")
 
 // router.get("/home",isUserRegistered, (req,res,next)=>{
