@@ -49,7 +49,7 @@ const userSchema = new Schema(
 
     },
 
-    profilePic: String,
+    profilePic: String, // url cloudinary
 
   },
 

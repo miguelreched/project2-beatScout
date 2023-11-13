@@ -54,6 +54,7 @@ router.post("/", async (req, res, next) => {
       
       _id: foundUser._id,
       email: foundUser.email,
+      role: foundUser.role
     }
 
     
@@ -67,9 +68,6 @@ router.post("/", async (req, res, next) => {
 
       })
 
-
-
-    
   }catch(error){
     
     next (error)

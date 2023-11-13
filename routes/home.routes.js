@@ -3,6 +3,8 @@ const User = require("../models/User.model")
 const router = express.Router()
 
 const isUserLogged = require("../middlewares/user.middleware.js")
+const isAdmin = require("../middlewares/user.middleware.js")
+
 
 // /GET "/home" => renderizar la vista  de la home
 

@@ -12,10 +12,15 @@ function isUserLogged (req,res,next) {
         next()
     }
 
-
-
 }
 
+function isAdmin(req, res, next) {
+    if(req.session.user.role === "admin"){
+        next() //dale que eres admin
+    } else {
+        res.redirect("/home")
+    }
+}
 
 
 
@@ -46,4 +51,4 @@ function isUserLogged (req,res,next) {
 
 
 
-module.exports = isUserLogged
+module.exports = isUserLogged, isAdmin
