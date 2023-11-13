@@ -9,6 +9,9 @@ router.get("/", (req, res, next) => {
 const userRouter = require("./user.routes.js")
 router.use("/",userRouter )
 
+const homeRouter = require("./home.routes.js")
+router.use("/", homeRouter)
+
 const bandRouter = require("./band.routes.js")
 router.use("/",bandRouter)
 

@@ -77,7 +77,7 @@ router.post("/", async (req, res, next) => {
 
       req.session.save(()=>{
 
-        res.redirect("/profile")
+        res.redirect("/home")
 
 
       })
@@ -140,6 +140,15 @@ router.post("/signup", async (req, res, next) => {
   }
 
   try {
+
+    const repeatedUsername = await User.findOne({ username });
+    if (repeatedUsername !== null) {
+      res.status(400).render("signup.hbs", {
+        errMess: "This username already exists",
+      });
+      return;
+    }
+
     const repeatedMail = await User.findOne({ email });
     if (repeatedMail !== null) {
       res.status(400).render("signup.hbs", {
@@ -147,13 +156,14 @@ router.post("/signup", async (req, res, next) => {
       });
       return;
     }
+  
 
     const salt = await bcrypt.genSalt(10);
     const cryptPassword = await bcrypt.hash(password, salt);
 
     await User.create({ username, email, password: cryptPassword, country });
 
-    res.redirect("/profile");
+    res.redirect("/home");
   } catch (err) {
     next(err);
   }

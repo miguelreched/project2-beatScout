@@ -4,7 +4,7 @@ function isUserLogged (req,res,next) {
 
     if(req.session.user === undefined){
 
-        res.redirect("/")
+        res.redirect("/home")
 
 
     } else{
@@ -15,5 +15,35 @@ function isUserLogged (req,res,next) {
 
 
 }
+
+
+
+
+// function isUserRegistered (req,res, next) {
+
+//     if (req.session.user === undefined) {
+
+//         res.redirect("/home")
+        
+//     } else{
+
+//         next()
+//     }
+// }
+
+
+// function updateLocals (req,res,next) {
+
+//     if (req.user.sesion.user)
+
+
+
+
+// }
+
+
+
+
+
 
 module.exports = isUserLogged

@@ -1,46 +1,50 @@
 
-<body>
+<body class = "signup-page">
 
     <div id="sign-up-container">
+
+        <a href="/signup">
+
         <img src="images/beat-scout-logo.jpg" alt="Logo" id="logo" width="200px">
+
+        </a>
 
 
         <div id="inside-sign-up-container">
 
-            <img src="images/signup-image.jpg" alt="signup-image" width="600">
+            <img src="images/signup-image.jpg" alt="signup-image" width="1000px">
 
 
         <form id = "signup-form" action ="/signup"  method="post">
             <label for="username">username:</label>
-            <input type="text" name="username"  id="username" required>
+            <input type="text" name="username"  id="username">
             <br>
 
             <label for="country">country:</label>
-            <input type="text" name="country"  id="country" required>
+            <input type="text" name="country"  id="country">
             <br>
 
 
             <label for="email">email:</label>
-            <input type="email" name="email"  id="email" required>
+            <input type="email" name="email"  id="email">
             <br>
 
             <label for="password">password:</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password">
             <br>
 
-            <button>
+            <button type="submit">Sign Up </button>
 
-                Sign Up
+            {{#if this.errMess}}
+             <p class="error">{{this.errMess}}</p>
+            {{/if}}
+    
+            <p id="signup-link">
 
-            </button>
-
-
-    {{#if this.errMess}}
-
-      <p class="error">{{this.errMess}}</p>
-
-    {{/if}}
-
+                <span style="color: black;">You already have an account?</span>
+                <strong><a href="/">Log in</a></strong>
+                
+                 </p>
             
         </form>
    
