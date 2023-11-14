@@ -25,6 +25,9 @@ router.get("/followed", isUserLogged, (req,res,next)=>{
 
         console.log(response)
 
+
+        
+
         res.render("user/other-users.hbs", {
 
             allUsers:response

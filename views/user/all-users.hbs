@@ -1,0 +1,42 @@
+<div>
+
+
+
+
+<h2>Discover our music gurús</h2>
+
+{{#each this.allUsers}}
+
+
+<div class="user-profiles-container">
+
+
+<img src="{{this.profilePic}}" alt="Profile picture"  height="300px">
+<p>Name:{{this.username}}</p>
+
+<button>
+    <a href="/all-users/{{this._id}}"> See more</a>
+</button>
+
+
+
+
+
+
+
+</div>
+
+
+
+{{/each}}
+
+
+
+
+....
+
+
+
+
+
+</div>

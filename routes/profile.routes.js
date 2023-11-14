@@ -29,10 +29,6 @@ router.get("/profile",isUserLogged, (req,res,next)=>{
     })
 
 
-
-
-router.get("/")
-
 // const isUserRegistered = require("../middlewares/user.middleware.js")
 
 // router.get("/home",isUserRegistered, (req,res,next)=>{
@@ -43,6 +39,7 @@ router.get("/")
 // })
 
 //actualizar la foto del usuario
+
 
 
 router.post("/profile-picture", uploader.single("image"), async(req, res, next)=>{
@@ -58,17 +55,63 @@ try{
     next (err)
 }
 
-
 })
 
 
+//GET => ver todos los usuarios en la web
+
+router.get("/all-users", isUserLogged, (req,res,next)=>{
+
+    User.find ()
+    .select({profilePic:1, username:1})
+    .then((response)=>{
+
+        console.log(response)
+
+        res.render("user/all-users.hbs", {
+
+            allUsers:response
+        })
+
+
+    })
+
+    .catch((error)=>{
+        
+        console.log(error)
+
+
+    })
+
+
+})
+
+//GET => ver detale de un usuario concreto
+
+
+router.get("/all-users/:id", async (req,res,next)=>{
+    
+    console.log(req.params)
+
+ try{
+
+    const response = await User.findById (req.params.id)
+    res.render("user/user-details.hbs", {
+ 
+        oneUser:response
+    })
+
+ }catch(error){
+
+    next(error)
+
+ }
 
 
 
 
 
-
-
+})
 
 
 
