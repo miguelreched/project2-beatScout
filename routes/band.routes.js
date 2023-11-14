@@ -59,13 +59,43 @@ router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
     
 
     Band.find()
-    .select({bandPic:1, name:1})
+    // .select({bandPic:1, name:1, genre: 1, info: 1, instagramUrl})
     .then((response)=>{
         console.log(response)
         res.render("band/favorite-bands.hbs", {
         allBands: response})
     })
-    .catch((err)=> next(err))
+    .catch((error)=>{
+        
+      console.log(error)
+
+
+  })
     })
+
+  router.get("/band-info/:id", async (req,res,next)=>{
+    
+  console.log(req.params)
+  
+   try{
+  
+      const response = await Band.findById (req.params.id)
+      res.render("band/band-info.hbs", {
+   
+          oneBand:response
+      })
+  
+   }catch(error){
+  
+      next(error)
+  
+   }
+  
+  
+  
+  
+  
+  })
+
 
 module.exports = router;

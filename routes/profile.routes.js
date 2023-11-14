@@ -63,7 +63,7 @@ try{
 router.get("/all-users", isUserLogged, (req,res,next)=>{
 
     User.find ()
-    .select({profilePic:1, username:1})
+    .select({profilePic:1, username:1, country: 1})
     .then((response)=>{
 
         console.log(response)
