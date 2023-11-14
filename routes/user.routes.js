@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
 // POST (/profile) = recibir las credenciales del usuario, validarlo y crear una sesiòn activa
 
 router.post("/", async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { username, password } = req.body;
 
   //validar que los campos estén llenos

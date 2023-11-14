@@ -1,6 +1,7 @@
 const express = require("express");
 const Band = require("../models/Band.model");
 const router = express.Router();
+const uploader = require("../middlewares/cloudinary.middleware.js")
 
 const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 
@@ -20,11 +21,12 @@ router.get("/add-bands",isUserLogged, (req,res,next)=>{
 
 // POST "/add-bands" => recibir los datos del formulario y crear banda en la DB
 
-router.post("/add-bands", async (req, res, next) => {
+router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
   console.log(req.body);
+  // console.log(req.file.path)
 
 
-  if (name === "" || genre === "" || info === "" || socialMedia === "") {
+  if (req.body.bandName === "" || req.body.genre === "" ||req.body.info === "" || req.body.instagramUrl === "" || req.body.facebookUrl === "" || req.body.spotifyUrl === "") {
     res.status(400).render("add-bands.hbs", {
       errMess: "All fields must be filled out",
     });
@@ -32,22 +34,20 @@ router.post("/add-bands", async (req, res, next) => {
   }
 
   try {
-  //   const repeatedBand = await Band.findOne({ name });
-  //   if (repeatedBand !== null) {
-  //     res.status(400).render("add-bands.hbs", {
-  //       errMess: "This band has already been created",
-  //     });
-  //     return;
-  //   }
-
+  
     await Band.create({ 
-      name: req.body.name, 
+      name: req.body.bandName, 
       genre: req.body.genre, 
       info: req.body.info, 
-      socialMedia: req.body.socialMedia });
+      instagramUrl: req.body.instagramUrl,
+      facebookUrl: req.body.facebookUrl,
+      spotifyUrl: req.body.spotifyUrl,
+      bandPic: req.file.path 
+    });
     res.redirect("/favorite-bands");
     return;
-  } catch (error) {
+  } 
+  catch (error) {
     next(error);
   }
 });
@@ -74,16 +74,9 @@ router.post("/add-bands", async (req, res, next) => {
 //     .catch((err)=> next(err))
 //     })
 
-
-
-
-
-
 router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
     
   res.render("band/favorite-bands.hbs")
-
-
 })
 
 module.exports = router;
