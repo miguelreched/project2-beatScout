@@ -4,19 +4,25 @@
 
 <h3>Your favorite bands</h3>
 
-<div id="band-container"></div>
 
-<div id="band-card-1">
+{{#each this.allBands}}
 
-{{#each this.bandProfile}}
+<div class ="band-card">
+
+<img src="{{this.bandPic}}" alt="Band picture"  height="300px">
+
 <p>Band Name: {{this.name}}</p>
 <p>Genre: {{this.genre}}</p>
 <p>Info: {{this.info}}</p>
 
-{{/each}}
+<button>
+    <a href="/all-users/{{this._id}}"> See more</a>
+</button>
+
 
 </div>
 
+{{/each}}
 </div>
 
 {{!-- <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil"> --}}

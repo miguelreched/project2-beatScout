@@ -52,31 +52,20 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
   }
 });
 
-// GET "/favorite band" nos lleva a ver a nuestras bandas faoritas
+//GET => ver todas las bandas en los usuarios en la web
 
-// router.get("/favorite-bands", (req, res, next) => {
-//   res.render("band/favorite-bands.hbs");
-// });
-
-
-
-// const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
-
-// router.get("/profile",isUserLogged, (req,res,next)=>{
-    
-
-//     Band.findById(req.session.band._id)
-//     .then((response)=>{
-//         console.log(response)
-//         res.render("band/favorite-band.hbs", {
-//         bandProfile: response})
-//     })
-//     .catch((err)=> next(err))
-//     })
 
 router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
     
-  res.render("band/favorite-bands.hbs")
-})
+
+    Band.find()
+    .select({bandPic:1, name:1})
+    .then((response)=>{
+        console.log(response)
+        res.render("band/favorite-bands.hbs", {
+        allBands: response})
+    })
+    .catch((err)=> next(err))
+    })
 
 module.exports = router;
