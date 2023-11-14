@@ -55,6 +55,26 @@ router.post("/add-bands", async (req, res, next) => {
 // });
 
 
+
+// const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
+
+// router.get("/profile",isUserLogged, (req,res,next)=>{
+    
+
+//     Band.findById(req.session.band._id)
+//     .then((response)=>{
+//         console.log(response)
+//         res.render("band/favorite-band.hbs", {
+//         bandProfile: response})
+//     })
+//     .catch((err)=> next(err))
+//     })
+
+
+
+
+
+
 router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
     
   res.render("band/favorite-bands.hbs")

@@ -35,8 +35,8 @@ const userSchema = new Schema(
 
     followed: [
       {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref:"User"
+        type: Schema.Types.ObjectId,
+        ref:"User"
       },      
 
     ],

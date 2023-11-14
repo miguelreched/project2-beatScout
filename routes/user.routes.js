@@ -147,6 +147,29 @@ router.post("/signup", async (req, res, next) => {
 
     // opcionalmente pueden crear una sesión acá y luego redirijen a /home
 
+    // const sessionInfoTwo = { 
+
+    //   _id: foundUser._id,
+    //   email: foundUser.email,
+    //   role: foundUser.role
+    // }
+
+    
+
+    //   req.session.user = sessionInfo
+
+    //   req.session.save(()=>{
+
+    //     res.redirect("/home")
+
+
+    //   })
+
+
+
+
+
+
     res.redirect("/");
   } catch (err) {
     next(err);

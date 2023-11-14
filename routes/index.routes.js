@@ -15,13 +15,12 @@ router.use("/", homeRouter)
 const bandRouter = require("./band.routes.js")
 router.use("/",bandRouter)
 
-const othersRouter = require("./other-users.routes.js")
-router.use("/",othersRouter)
+const followedRouter = require("./followed.routes.js")
+router.use("/",followedRouter)
 
 const profileRouter = require("./profile.routes.js")
 router.use("/", profileRouter)
 
-const bandProfileRouter = require("./band-profile.routes.js")
-router.use("/", bandProfileRouter )
+
 
 module.exports = router;
