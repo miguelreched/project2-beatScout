@@ -6,14 +6,8 @@
 
 
     <div id="add-bands-container">
-      
-
     
-            
-        
-
-        <form id="add-bands-form" action ="/add-bands"  method="post" style="margin-top": 20px;>
-
+        <form id="add-bands-form" action ="/add-bands"  method="post" enctype="multipart/form-data">
 
             <label for="name" style="width: 100px;">Band name:</label>
             <input type="text" name="name" id="band-name">
@@ -38,13 +32,12 @@
 
             </select>
 
-
           <br>
 
             <label for="info">Band Info:</label>
             <input type="text" name="info" id="band-info" >
             <br>
-
+{{!-- 
              <label for="instagramUrl">Instagram: </label>
             <input type="text" name="instagramUrl" id="instagramUrl" >
             <br>
@@ -55,17 +48,22 @@
 
                <label for="spotifyUrl">Spotify: </label>
             <input type="text" name="spotifyUrl" id="spotifyUrl">
-            <br>
+            <br> --}}
 
-            <label for="image">Band Picture</label>
+        
+
+
+     
+        <br>
+        
+        <label for="image">Band Picture</label>
         <input type="file" name="image" >
-        <br>
-
-        <button id="upload-band-image">Upload image</button>
-        <br>
-        <br>
-        <br>
+            
         <button type="submit">Submit</button>
+        
+        <br>
+        <br>
+        <br>
             <br>
 
 

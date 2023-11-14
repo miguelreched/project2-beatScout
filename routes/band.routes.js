@@ -22,7 +22,7 @@ router.get("/add-bands",isUserLogged, (req,res,next)=>{
 
 router.post("/add-bands", async (req, res, next) => {
   console.log(req.body);
-  const { name, genre, info, socialMedia } = req.body;
+
 
   if (name === "" || genre === "" || info === "" || socialMedia === "") {
     res.status(400).render("add-bands.hbs", {
@@ -32,15 +32,19 @@ router.post("/add-bands", async (req, res, next) => {
   }
 
   try {
-    const repeatedBand = await Band.findOne({ name });
-    if (repeatedBand !== null) {
-      res.status(400).render("add-bands.hbs", {
-        errMess: "This band has already been created",
-      });
-      return;
-    }
+  //   const repeatedBand = await Band.findOne({ name });
+  //   if (repeatedBand !== null) {
+  //     res.status(400).render("add-bands.hbs", {
+  //       errMess: "This band has already been created",
+  //     });
+  //     return;
+  //   }
 
-    await Band.create({ name, genre, info, socialMedia });
+    await Band.create({ 
+      name: req.body.name, 
+      genre: req.body.genre, 
+      info: req.body.info, 
+      socialMedia: req.body.socialMedia });
     res.redirect("/favorite-bands");
     return;
   } catch (error) {
