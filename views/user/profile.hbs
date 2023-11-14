@@ -1,65 +1,31 @@
 <div>
+    
+  <h3>This is your profile</h3>
+
+  <div id="profile-container">
+    <p>Name: {{this.userProfile.username}}</p>
+    <p>Country: {{this.userProfile.country}}</p>
+
+    {{#if this.userProfile.profilePic}}
+      <img src="{{this.userProfile.profilePic}}" alt="profile-pic" width="200px">
+    {{/if}}
 
 
+    <form id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data">
 
-<h3>This is your profile</h3>
+      <label for="image">Profile Picture:</label>
+      <input type="file" name="image">
 
-
-
-    <div id="profile-container">
-
-        
-        <p>Name: {{this.userProfile.username}}</p>
-        <p>Country: {{this.userProfile.country}}</p>
-        
-        {{#if this.userProfile.profilePic}}
-           
-        <img src="{{this.userProfile.profilePic}}" alt="profile-pic" width="200px">
-
-            {{/if}}
-
-
-        {{#if this.userProfile.profilePic}}
-         <form  id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data"></form>
-        {{else}}
-         <form  id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data"></form>
-        {{/if}}
-        
-        <label for="image">Foto de perfil</label>
-        <input type="file" name="image">
-            
-
-
-
-            {{#if this.userProfile.profilePic}}
-             <button>Edit image</button>
-            
-
-            {{else}}
-            <button>Upload image</button>
-
-            {{/if}}
-            
-          
-
-
-
-        </form>
-
-            {{#if this.userProfile.profilePic}}
-             <button id="show-form">Edit image</button>
-              {{/if}}
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
+      {{#if this.userProfile.profilePic}} 
+        <button>Edit image</button>
+      {{else}}
+        <button>Upload image</button>
+      {{/if}}
+    </form>
+ 
+ 
+ 
+ 
+ 
+  </div>
 </div>
