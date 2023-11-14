@@ -15,10 +15,10 @@ const bandSchema = new Schema({
   },
 
   instagramUrl: String,
-  facebook: String,
-  spotify: String,
+  facebookUrl: String,
+  spotifyUrl: String,
 
-  image: String,
+  bandPic: String,
 });
 
 const Band = model("Band", bandSchema);
