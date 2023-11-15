@@ -116,7 +116,8 @@ router.post("/followed/:userId", isUserLogged, async (req, res, next) => {
     
     try{
 
-       const response = await User.findById(req.params.id).populate("followed")
+       const response = await User.findById(req.params.userId).populate("followed")
+       console.log(req.params.userId, "AQUI")
         res.redirect("/followed"), {
 
             followedUser:response

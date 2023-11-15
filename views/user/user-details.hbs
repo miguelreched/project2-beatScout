@@ -12,11 +12,8 @@
 
 <p>Country: {{this.oneUser.country}}</p>
 
-<button>
-    <a href="">Follow</a>
-</button>
 
-<form action="/followed/{{this._id}}" method="post">
+<form action="/followed/{{this.oneUser._id}}" method="post">
 
     <button class="btn-user-favorites"> Follow</button> 
 
