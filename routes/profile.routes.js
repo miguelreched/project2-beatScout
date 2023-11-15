@@ -134,17 +134,18 @@ router.post("/followed/:userId", isUserLogged, async (req, res, next) => {
 
   router.get("/followed/:id",isUserLogged, async (req,res,next)=>{
 
-    User.find(followedUser)
+    try {
 
-    .then((response)=>{
+        const followedUser = await User.findById(req.params.id)
+
+        res.render ("followed.hbs", {followedUser})
 
 
-    })
-    .catch((error)=>{
 
-        console.log(error)
+    } catch(error){
 
-    })
+        next(error)
+    }
 
   })
   
