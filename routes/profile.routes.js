@@ -7,7 +7,7 @@ const uploader = require("../middlewares/cloudinary.middleware.js")
 const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 
 
-// ruta privada ar ausuarios con sesiones activas
+// ruta privada par ausuarios con sesiones activas
 
 router.get("/home",isUserLogged, (req,res,next)=>{
     
@@ -86,7 +86,7 @@ router.get("/all-users", isUserLogged, (req,res,next)=>{
 
 })
 
-//GET => ver detale de un usuario concreto
+//GET => ver detalle de un usuario concreto
 
 
 router.get("/all-users/:id", async (req,res,next)=>{
@@ -107,11 +107,48 @@ router.get("/all-users/:id", async (req,res,next)=>{
 
  }
 
-
-
-
-
 })
+
+
+//POST=> seguir a un usuario en concreto que se imprima en la DB de users
+
+router.post("/followed/:userId", isUserLogged, async (req, res, next) => {
+    
+    try{
+
+       const response = await User.findById(req.params.id).populate("followed")
+        res.redirect("/followed"), {
+
+            followedUser:response
+        };
+
+
+    }catch(error){
+        next(error)
+    }
+  
+    
+  });
+
+
+
+  router.get("/followed/:id",isUserLogged, async (req,res,next)=>{
+
+    User.find(followedUser)
+
+    .then((response)=>{
+
+
+    })
+    .catch((error)=>{
+
+        console.log(error)
+
+    })
+
+  })
+  
+    
 
 
 

@@ -1,16 +1,17 @@
 <div>
+  <h3>Followed users</h3>
 
+  {{#each this.followedUser.followed}}
+    <div>
 
-<h3>Usuarios seguidos</h3>
+    <img src="{{this.profilePic}}" alt="Profile picture"  height="300px">
 
+      <p>{{this.username}}</p>
+      <p>Country: {{this.country}}</p>
+    </div>
+  {{/each}}
 
-
-
-
-....
-
-
-
-
-
+  {{#if followedUser.length === 0}}
+    <p>You are not following any user yet.</p>
+  {{/if}}
 </div>
