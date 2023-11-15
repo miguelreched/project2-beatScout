@@ -24,6 +24,8 @@ const projectName = "name-of-your-app";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+const { updateLocals } = require('./middlewares/user.middleware')
+
 // 👇 Start handling routes here
 
 const indexRoutes = require("./routes/index.routes");

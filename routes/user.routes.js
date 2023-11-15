@@ -54,13 +54,15 @@ router.post("/", async (req, res, next) => {
 
       _id: foundUser._id,
       email: foundUser.email,
-      role: foundUser.role
+      role: foundUser.role,
+      profilePic: foundUser.profilePic
     }
 
     
 
       req.session.user = sessionInfo
 
+      console.log(req.session.user)
       req.session.save(()=>{
 
         res.redirect("/home")

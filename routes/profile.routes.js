@@ -93,12 +93,17 @@ router.get("/all-users/:id", async (req,res,next)=>{
     
     console.log(req.params)
 
+    const connectedUser = req.session.user
+    console.log(connectedUser)
+
  try{
 
     const response = await User.findById (req.params.id)
     res.render("user/user-details.hbs", {
  
-        oneUser:response
+        
+        oneUser:response,
+        connectedUser
     })
 
  }catch(error){
@@ -112,19 +117,20 @@ router.get("/all-users/:id", async (req,res,next)=>{
 
 //POST=> seguir a un usuario en concreto que se imprima en la DB de users
 
-router.post("/followed/:userId", isUserLogged, async (req, res, next) => {
+router.post("/follow/:userId/:followId", isUserLogged, async (req, res, next) => {
     
+    console.log(req.params)
+
     try{
 
-       const response = await User.findById(req.params.userId).populate("followed")
-       console.log(req.params.userId, "AQUI")
-        res.redirect("/followed"), {
+       const response = await User.findByIdAndUpdate(req.params.userId, {$push:{followed:req.params.followId}})
 
-            followedUser:response
-        };
+       
+        res.redirect(`/followed/${req.session.user._id}`)
 
 
-    }catch(error){
+
+    } catch(error){
         next(error)
     }
   
@@ -137,9 +143,9 @@ router.post("/followed/:userId", isUserLogged, async (req, res, next) => {
 
     try {
 
-        const followedUser = await User.findById(req.params.id)
+        const followedUser = await User.findById(req.params.id).populate("followed")
 
-        res.render ("followed.hbs", {followedUser})
+        res.render ("user/followed.hbs", {followedUser})
 
 
 

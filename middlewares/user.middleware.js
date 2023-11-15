@@ -24,31 +24,26 @@ function isAdmin(req, res, next) {
 
 
 
-// function isUserRegistered (req,res, next) {
 
-//     if (req.session.user === undefined) {
+function updateLocals(req, res, next) {
 
-//         res.redirect("/home")
-        
-//     } else{
+    if (req.session.user === undefined){
 
-//         next()
-//     }
-// }
+        res.locals.isSessionActive = false //variable accesible en handlebars
 
+    } else {
 
-// function updateLocals (req,res,next) {
-
-//     if (req.user.sesion.user)
+        res.locals.isSessionActive = true
+    }
+    next()// continua normalmente con las rutas
 
 
 
 
-// }
+}
 
 
 
 
 
-
-module.exports = {isUserLogged, isAdmin}
+module.exports = {isUserLogged, isAdmin,updateLocals}

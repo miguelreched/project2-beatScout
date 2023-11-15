@@ -55,14 +55,13 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
 //GET => ver todas las bandas en los usuarios en la web
 
 
-router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
+router.get("/all-bands",isUserLogged, (req,res,next)=>{
     
 
     Band.find()
-    // .select({bandPic:1, name:1, genre: 1, info: 1, instagramUrl})
     .then((response)=>{
         console.log(response)
-        res.render("band/favorite-bands.hbs", {
+        res.render("band/all-bands.hbs", {
         allBands: response})
     })
     .catch((error)=>{
@@ -76,13 +75,16 @@ router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
   router.get("/band-info/:id", async (req,res,next)=>{
     
   console.log(req.params)
+
+  const connectedUser = req.session.user
   
    try{
   
       const response = await Band.findById (req.params.id)
       res.render("band/band-info.hbs", {
    
-          oneBand:response
+          oneBand:response,
+          connectedUser
       })
   
    }catch(error){
@@ -96,6 +98,53 @@ router.get("/favorite-bands",isUserLogged, (req,res,next)=>{
   
   
   })
+
+
+
+  //POST seguir a una banda en concreto y que seimprima en la DB
+
+
+
+  router.post("/my-bands/:userId/:myBandId", isUserLogged, async (req,res,next )=>{
+
+
+
+    try{
+
+      const response =await Band.findByIdAndUpdate(req.params.bandId, {$push:{
+        favoriteBand:req.params.followId}})
+
+        res.redirect(`/my-bands/${req.session.user._id}`)
+
+    }catch(error){
+      next(error)
+    }
+
+
+  })
+
+  router.get("/my-bands/:id",isUserLogged, async (req,res,next)=>{
+
+    try {
+
+        const followedBand = await Band.findById(req.params.id).populate("favoriteBand")
+
+        res.render ("band/favorite-bands.hbs", {followedBand})
+
+
+
+    } catch(error){
+
+        next(error)
+    }
+
+  })
+  
+
+
+
+
+
 
 
 module.exports = router;

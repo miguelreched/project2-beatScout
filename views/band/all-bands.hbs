@@ -1,0 +1,36 @@
+
+<div>
+
+
+
+<h3>All Bands</h3>
+
+
+{{#each this.allBands}}
+
+<div class ="band-card">
+
+<img src="{{this.bandPic}}" alt="Band picture"  height="300px">
+
+<p>Band Name: {{this.name}}</p>
+<p>Genre: {{this.genre}}</p>
+<p>Info: {{this.info}}</p>
+
+<button>
+    <a href="/band-info/{{this._id}}"> See more</a>
+</button>
+
+
+</div>
+
+{{/each}}
+</div>
+
+{{!-- <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil"> --}}
+
+
+
+
+
+
+</div>

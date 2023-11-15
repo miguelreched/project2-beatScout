@@ -14,9 +14,11 @@
 <p>facebook: {{this.oneBand.facebookUrl}}</p>
 <p>spotify: {{this.oneBand.spotifyUrl}}</p>
 
-<button>
-    <a href="">Follow</a>
-</button>
+<form action="/follow/{{this.connectedUser._id}}/{{this.oneUser._id}}" method="post">
+
+    <button class="btn-user-favorites"> Follow</button> 
+
+    </form>
 
 
 <div>
