@@ -1,15 +1,20 @@
 <div>
 
-<h2>Discover our music gurús</h2>
+<h2>Gurú's details</h2>
 
 
 <img src="{{this.oneUser.profilePic}}" alt="Profile picture"  height="300px">
 
-<h3>{{this.oneUser.username}}</h3>
+<h2>{{this.oneUser.username}}</h2>
+
+
 
 
 <p>Country: {{this.oneUser.country}}</p>
 
+<button>
+    <a href="">Follow</a>
+</button>
 
 <form action="/followed/{{this._id}}" method="post">
 
