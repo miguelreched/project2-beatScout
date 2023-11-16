@@ -131,7 +131,7 @@ try{
 
 
   //GET añadir mis bandas favoritas a la vista
-  router.get("/my-bands/",isUserLogged, async (req,res,next)=>{
+  router.get("/my-bands",isUserLogged, async (req,res,next)=>{
 
     try {
 
