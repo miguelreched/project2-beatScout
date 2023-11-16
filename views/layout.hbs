@@ -7,34 +7,46 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+
+  
    </head>
 
+
+
+<header>
+
+
+   <div id="burguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
    <body>
-
-
-      <nav>
 
          <a href="/home">
        <img src="/images/beat-scout-logo.jpg" alt="Logo" id="logo" width="120px">
        </a>
-         <br>
+
+      <nav>
+
+       
 
          <a href="/add-bands"> add bands </a>
-         <br>
+       
 
          <a href="/all-bands"> all bands </a>
-         <br>
-
+         
          <a href="/my-bands"> my bands </a>
 
          <a href="/followed/{{this.connectedUser._id}}">followed </a>
 
-         <br>
+         
 
 
            <a href="/all-users">community</a>
 
-         <br>
+         
       
          <a href="/profile">Profile</a> 
          {{!-- <img src="{{req.session.user.profilePic}}" alt="Profile" id ="profile-pic"></a> --}}
@@ -44,6 +56,8 @@
         
 </nav>
  
+</header>
+
 
 
 
@@ -53,6 +67,9 @@
       {{{body}}}
 
       <script src="/js/script.js"></script>
+
+
+
    
    </body>
 

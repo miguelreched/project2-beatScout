@@ -1,4 +1,4 @@
-<div>
+<div class="grid-container">
   <h3>Followed users</h3>
 
   {{#each this.followedUser.followed}}
@@ -8,6 +8,10 @@
 
       <p>{{this.username}}</p>
       <p>Country: {{this.country}}</p>
+
+    <button>
+    <a href="/all-users/{{this._id}}"> See more</a>
+    </button>
     </div>
   {{/each}}
 

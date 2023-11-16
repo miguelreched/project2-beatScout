@@ -1,5 +1,7 @@
-<div>
+<div class= "grid-container profile">
   <h3>This is your profile</h3>
+
+<div class="column-one">  
 
   <div id="profile-container">
     <p>Name: {{this.moderatorProfile.username}}</p>
@@ -20,6 +22,13 @@
       {{/if}}
     </form>
 
+  </div>
+
+</div>
+
+
+
+<div class="column-two"> 
     <div class="my-followed-users"> 
       {{#each this.moderatorProfile.followed}}
         <div class="user-i-followed">
@@ -28,11 +37,11 @@
           <p>{{this.country}}</p>
         </div>
       {{/each}}
+        <button>
+            <a href="/all-users">edit community</a>
+        </button>
     </div>
 
-<button>
-    <a href="/all-users">edit community</a>
-</button>
 
 <div class="my-followed-bands"> 
       {{#each this.moderatorProfile.favoriteBand}}
@@ -42,11 +51,13 @@
           <p>{{this.genre}}</p>
         </div>
       {{/each}}
+      <button>
+          <a href="/all-bands">edit bands</a>
+      </button>
     </div>
+</div>
 
-<button>
-    <a href="/all-bands">edit bands</a>
-</button>
+</div>
 
 
 
