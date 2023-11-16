@@ -18,7 +18,7 @@ function isModerator(req, res, next) {
     if(req.session.user.role === "moderator"){
         next() //dale que eres admin
     } else {
-        res.redirect("/home")
+        res.redirect("/admin")
     }
 }
 

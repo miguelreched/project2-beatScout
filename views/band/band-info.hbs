@@ -8,11 +8,21 @@
 <h3>{{this.oneBand.name}}</h3>
 
 
-<p>Country: {{this.oneBand.info}}</p>
+<p> <strong>Info:</strong> {{this.oneBand.info}}</p>
 
-<p>instagram: {{this.oneBand.instagramUrl}}</p>
-<p>facebook: {{this.oneBand.facebookUrl}}</p>
-<p>spotify: {{this.oneBand.spotifyUrl}}</p>
+
+<a href="{{this.oneBand.instagramUrl}}"target="blank" >instagram: </a>
+<br>
+<br>
+
+<a href="{{this.oneBand.facebookUrl}}"target="blank">facebook: </a>
+<br>
+<br>
+
+<a href="{{this.oneBand.spotifyUrl}}" target="blank">spotify: </a>
+
+<br>
+<br>
 
 <form action="/my-bands/{{this.connectedUser._id}}/{{this.oneBand._id}}" method="post">
 

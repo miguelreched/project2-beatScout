@@ -4,7 +4,7 @@ const User = require ("../models/User.model")
 const router = express.Router();
 const uploader = require("../middlewares/cloudinary.middleware.js")
 
-const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
+const {isUserLogged, isAdmin, isModerator} = require("../middlewares/user.middleware.js")
 
 // GET /"add-bands" nos lleva a añadir  bandas a nuestra lista
 // router.get("/add-bands", (req, res, next) => {
@@ -45,7 +45,7 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
       spotifyUrl: req.body.spotifyUrl,
       bandPic: req.file.path 
     });
-    res.redirect("/favorite-bands");
+    res.redirect("/my-bands");
     return;
   } 
   catch (error) {
@@ -56,22 +56,30 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
 //GET => ver todas las bandas en los usuarios en la web
 
 
-router.get("/all-bands",isUserLogged, (req,res,next)=>{
+router.get("/all-bands",isUserLogged,async (req,res,next)=>{
     
+try{
+  const response = await Band.find()
+  
+  if (req.session.user.role === "user") {
+    res.render("band/all-bands.hbs", {
+      allBands: response,
+    });
+  } else if (req.session.user.role === "moderator") {
+    res.render("band/admin-all-bands.hbs", {
+      allBands: response,
+    });
+  }
 
-    Band.find()
-    .then((response)=>{
-        console.log(response)
-        res.render("band/all-bands.hbs", {
-        allBands: response})
-    })
-    .catch((error)=>{
+}catch(error){
         
-      console.log(error)
+     next(error)
+  }
+}) 
 
 
-  })
-    })
+
+
 
   router.get("/band-info/:id", async (req,res,next)=>{
     
@@ -121,6 +129,8 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
 
   })
 
+
+  //GET añadir mis bandas favoritas a la vista
   router.get("/my-bands/",isUserLogged, async (req,res,next)=>{
 
     try {
@@ -138,6 +148,8 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
 
   })
 
+
+  //GET añadir mis bandas favoritas al boton del nav cuando esta mi sesion abierta
   router.get("/my-bands/:id",isUserLogged, async (req,res,next)=>{
 
     try {
@@ -154,8 +166,27 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
     }
 
   })
-  
 
+
+  //POST  eliminar banda
+  
+router.post("/all-bands/:bandId/delete",isUserLogged,isModerator, (req,res,next)=>{
+Band.findByIdAndDelete(req.params.bandId)
+
+.then(()=>{
+
+  res.redirect("/all-bands")
+
+
+}).catch((error)=>{
+
+  next(error)
+
+})
+
+
+
+})
 
 
 
