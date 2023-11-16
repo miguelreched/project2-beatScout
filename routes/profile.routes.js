@@ -11,8 +11,8 @@ const {
 
 // ruta privada par ausuarios con sesiones activas
 
-router.get("/home", isUserLogged, (req, res, next) => {
-  res.render("user/home.hbs");
+router.get("/all-bands", isUserLogged, (req, res, next) => {
+  res.render("band/all-bands.hbs");
 });
 
 router.get("/profile", isUserLogged, async (req, res, next) => {

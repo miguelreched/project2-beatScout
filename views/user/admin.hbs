@@ -30,13 +30,27 @@
       {{/each}}
     </div>
 
-
 <button>
     <a href="/all-users">edit community</a>
 </button>
 
+<div class="my-followed-bands"> 
+      {{#each this.moderatorProfile.favoriteBand}}
+        <div class="user-i-followed">
+          <img src="{{this.bandPic}}" alt="Profile picture" class="small-profile-pic">
+          <p><strong>{{this.name}}</strong> </p>
+          <p>{{this.genre}}</p>
+        </div>
+      {{/each}}
+    </div>
+
 <button>
-    <a href="/all-bands">edit bandsy</a>
+    <a href="/all-bands">edit bands</a>
 </button>
+
+
+
+
+
 
 

@@ -65,7 +65,7 @@ router.post("/", async (req, res, next) => {
       console.log(req.session.user)
       req.session.save(()=>{
 
-        res.redirect("/home")
+        res.redirect("/all-bands")
 
 
       })
