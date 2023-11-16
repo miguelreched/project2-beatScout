@@ -30,26 +30,31 @@
     <button class="btn-user-favorites"> Follow</button> 
 
     </form>
-
+<br>
     <form action="/comment-create/{{this.oneBand._id}}" method="post">
-           <label for="comment" class="form-label">Comments: </label>
+<label for="rating">Rate this band</label>
+    <select name="rating"> 
+            <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+                <option value=5>5</option>
+                </select>
+                <br>
+           <label for="comment" class="form-label">Comment: </label>
     <textarea name="comment" rows="5"></textarea>
+    <br>
 
-    <select> <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-    <button style="margin-top: 10px;" >Send Comment</button>
+
+    <button style="margin-top: 10px;" >Submit</button>
     
     </form>
 
     {{#each this.comment}}
 
     <h3>{{this.user.username}}</h3>
-    <p>{{this.comment}}</p>
-    <p>{{this.rating}}</p>
+    <p>Comment: {{this.comment}}</p>
+    <p>Rating: {{this.rating}}</p>
 
 
     {{/each}}
