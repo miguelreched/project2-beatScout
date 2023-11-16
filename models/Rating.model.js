@@ -3,24 +3,29 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const ratingSchema = new Schema(
   {
-    author: [
+
+    rating: {
+
+      type: Number,
+      default:0,
+
+
+    },
+
+
+    username: [
       {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref:"User"
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
         required: true,
       },
     ],
-    score: Number,
-
-    comment: {
-      type: String,
-      required: true,
-    },
-
+   
+  
     band: [
       {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref:"Band"
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Band"
       },
     ],
   },
@@ -30,6 +35,6 @@ const ratingSchema = new Schema(
   }
 );
 
-const User = model("User", userSchema);
+const Rating = model("Rating", ratingSchema);
 
-module.exports = User;
+module.exports = Rating;

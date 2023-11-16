@@ -15,8 +15,8 @@ router.use("/", homeRouter)
 const bandRouter = require("./band.routes.js")
 router.use("/",bandRouter)
 
-const followedRouter = require("./followed.routes.js")
-router.use("/",followedRouter)
+const ratingRouter = require("./rating.routes.js")
+router.use("/",ratingRouter)
 
 const profileRouter = require("./profile.routes.js")
 router.use("/", profileRouter)

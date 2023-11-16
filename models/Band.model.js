@@ -14,6 +14,21 @@ const bandSchema = new Schema({
     required: true,
   },
 
+  ratings: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      rating: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+
+
   instagramUrl: String,
   facebookUrl: String,
   spotifyUrl: String,

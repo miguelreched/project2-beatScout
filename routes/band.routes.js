@@ -190,6 +190,33 @@ Band.findByIdAndDelete(req.params.bandId)
 
 
 
+// POST crear calificación de vándalas
+
+router.post("/create/:id", async (req, res, next) => {
+  const { rating } = req.body;
+  const bandId = req.params.id;
+  const userId = req.session.user._id;
+
+  const newRating = {
+    rating,
+    user: userId,
+    band: bandId,
+  };
+
+  try {
+    await Rating.create(newRating);
+
+
+    res.redirect(`/band-info/${bandId}`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
+
+
 
 
 
