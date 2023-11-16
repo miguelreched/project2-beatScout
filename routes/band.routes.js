@@ -50,7 +50,7 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
       spotifyUrl: req.body.spotifyUrl,
       bandPic: req.file.path,
     });
-    res.redirect("/my-bands");
+    res.redirect("/all-bands");
     return;
   } catch (error) {
     next(error);
