@@ -17,9 +17,12 @@ const commentSchema = new Schema({
     required: true,
   },
 
- comment:String
+ comment:String,
 
-
+ rating: {
+   type: Number,
+  
+ }
 })
 
 const Comment= model("Comment", commentSchema);

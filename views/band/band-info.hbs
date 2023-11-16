@@ -31,5 +31,28 @@
 
     </form>
 
+    <form action="/comment-create/{{this.oneBand._id}}" method="post">
+           <label for="comment" class="form-label">Comments: </label>
+    <textarea name="comment" rows="5"></textarea>
+
+    <select> <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+    <button style="margin-top: 10px;" >Send Comment</button>
+    
+    </form>
+
+    {{#each this.comment}}
+
+    <h3>{{this.user.username}}</h3>
+    <p>{{this.comment}}</p>
+    <p>{{this.rating}}</p>
+
+
+    {{/each}}
+
 
 <div>
