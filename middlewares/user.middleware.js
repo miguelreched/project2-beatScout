@@ -14,8 +14,8 @@ function isUserLogged (req,res,next) {
 
 }
 
-function isAdmin(req, res, next) {
-    if(req.session.user.role === "admin"){
+function isModerator(req, res, next) {
+    if(req.session.user.role === "moderator"){
         next() //dale que eres admin
     } else {
         res.redirect("/home")
@@ -46,4 +46,4 @@ function updateLocals(req, res, next) {
 
 
 
-module.exports = {isUserLogged, isAdmin,updateLocals}
+module.exports = {isUserLogged,isModerator,updateLocals}

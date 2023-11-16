@@ -28,8 +28,8 @@ const userSchema = new Schema(
 
     favoriteBand: [
       {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref:"Band"
+        type: Schema.Types.ObjectId,
+        ref:"Band"
       },
     ],
 

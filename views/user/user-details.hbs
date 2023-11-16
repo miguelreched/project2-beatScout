@@ -15,8 +15,13 @@
 
 <form action="/follow/{{this.connectedUser._id}}/{{this.oneUser._id}}" method="post">
 
+    {{#if this.isFollowed}}
+    <button disabled class="btn-user-favorites"> Follow</button> 
+{{else}}
     <button class="btn-user-favorites"> Follow</button> 
 
+
+{{/if}}
     </form>
 
     </div>

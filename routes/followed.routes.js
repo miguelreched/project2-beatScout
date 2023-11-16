@@ -18,33 +18,33 @@ const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
 
  //GET "/followed" => renderizar la vista  de todos los usuarios que seguimos
 
-router.get("/followed", isUserLogged, (req,res,next)=>{
+// router.get("/followed", isUserLogged, (req,res,next)=>{
 
-    User.find ()
-    .then((response)=>{
+//     User.find ()
+//     .then((response)=>{
 
-        console.log(response)
+//         console.log(response)
 
 
         
 
-        res.render("user/other-users.hbs", {
+//         res.render("user/followed.hbs", {
 
-            allUsers:response
-        })
+//             allUsers:response
+//         })
 
 
-    })
+//     })
 
-    .catch((error)=>{
+//     .catch((error)=>{
         
-        console.log(error)
+//         console.log(error)
 
 
-    })
+//     })
 
 
-})
+// })
 
 
 

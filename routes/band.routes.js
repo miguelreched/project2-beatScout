@@ -1,5 +1,6 @@
 const express = require("express");
 const Band = require("../models/Band.model");
+const User = require ("../models/User.model")
 const router = express.Router();
 const uploader = require("../middlewares/cloudinary.middleware.js")
 
@@ -80,7 +81,7 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
   
    try{
   
-      const response = await Band.findById (req.params.id)
+      const response = await Band.findById(req.params.id)
       res.render("band/band-info.hbs", {
    
           oneBand:response,
@@ -101,18 +102,15 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
 
 
 
-  //POST seguir a una banda en concreto y que seimprima en la DB
-
-
+  //POST seguir a una banda en concreto y que se imprima en la DB
 
   router.post("/my-bands/:userId/:myBandId", isUserLogged, async (req,res,next )=>{
 
 
-
     try{
 
-      const response =await Band.findByIdAndUpdate(req.params.bandId, {$push:{
-        favoriteBand:req.params.followId}})
+      const response =await User.findByIdAndUpdate(req.params.userId, {$push:{
+        favoriteBand:req.params.myBandId}})
 
         res.redirect(`/my-bands/${req.session.user._id}`)
 
@@ -123,11 +121,28 @@ router.get("/all-bands",isUserLogged, (req,res,next)=>{
 
   })
 
+  router.get("/my-bands/",isUserLogged, async (req,res,next)=>{
+
+    try {
+
+        const followedBand = await User.findById(req.session.user._id).populate("favoriteBand")
+
+        res.render ("band/favorite-bands.hbs", {followedBand})
+
+
+
+    } catch(error){
+
+        next(error)
+    }
+
+  })
+
   router.get("/my-bands/:id",isUserLogged, async (req,res,next)=>{
 
     try {
 
-        const followedBand = await Band.findById(req.params.id).populate("favoriteBand")
+        const followedBand = await User.findById(req.params.id).populate("favoriteBand")
 
         res.render ("band/favorite-bands.hbs", {followedBand})
 

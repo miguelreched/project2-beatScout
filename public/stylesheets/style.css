@@ -363,7 +363,39 @@ body.signup-page {
 .error {
   color: blueviolet;
   font-weight: bold;
+
 }
+
+
+
+#profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile-pic {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.my-followed-users {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-i-followed {
+  width: 30%; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.small-profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 
 
 /* #form-profile-picture{

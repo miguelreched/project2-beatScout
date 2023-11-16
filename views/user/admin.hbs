@@ -2,18 +2,18 @@
   <h3>This is your profile</h3>
 
   <div id="profile-container">
-    <p>Name: {{this.userProfile.username}}</p>
+    <p>Name: {{this.moderatorProfile.username}}</p>
     <p>Country: {{this.userProfile.country}}</p>
 
-    {{#if this.userProfile.profilePic}}
-      <img src="{{this.userProfile.profilePic}}" alt="profile-pic" class="profile-pic">
+    {{#if this.moderatorProfile.profilePic}}
+      <img src="{{this.moderatorProfile.profilePic}}" alt="profile-pic" class="profile-pic">
     {{/if}}
 
     <form id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data">
       <label for="image">Profile Picture:</label>
       <input type="file" name="image">
 
-      {{#if this.userProfile.profilePic}} 
+      {{#if this.moderatorProfile.profilePic}} 
         <button>Edit image</button>
       {{else}}
         <button>Upload image</button>
@@ -31,17 +31,12 @@
     </div>
 
 
-     <div class="my-followed-bands"> 
-      {{#each this.userProfile.favoriteBand}}
-        <div class="user-i-followed">
-          <img src="{{this.bandPic}}" alt="Profile picture" class="small-profile-pic">
-          <p><strong>{{this.name}}</strong> </p>
-          <p>{{this.genre}}</p>
-        </div>
-      {{/each}}
-    </div>
+<button>
+    <a href="/all-users">edit community</a>
+</button>
 
+<button>
+    <a href="/all-bands">edit bandsy</a>
+</button>
 
-  </div>
-</div>
 

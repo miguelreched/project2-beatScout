@@ -4,7 +4,7 @@ const User = require("../models/User.model");
 
 const uploader = require("../middlewares/cloudinary.middleware.js")
 
-const {isUserLogged, isAdmin} = require("../middlewares/user.middleware.js")
+const {isUserLogged, isModerator} = require("../middlewares/user.middleware.js")
 
 
 // ruta privada par ausuarios con sesiones activas
@@ -16,27 +16,28 @@ router.get("/home",isUserLogged, (req,res,next)=>{
 })
 
 
-router.get("/profile",isUserLogged, (req,res,next)=>{
-    
+router.get("/profile", isUserLogged, async (req, res, next) => {
+    try {
+      const response = await User.findById(req.session.user._id)
+        .populate({
+          path: "followed",
+          options: { limit: 3 },
+        })
+        .populate({
+          path: "favoriteBand",
+          options: { limit: 3 },
+        });
+  
+      res.render("user/profile.hbs", {
+        userProfile: response,
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+  
 
-    User.findById(req.session.user._id)
-    .then((response)=>{
-        console.log(response)
-        res.render("user/profile.hbs", {
-        userProfile: response})
-    })
-    .catch((err)=> next(err))
-    })
 
-
-// const isUserRegistered = require("../middlewares/user.middleware.js")
-
-// router.get("/home",isUserRegistered, (req,res,next)=>{
-    
-//     res.render("user/home.hbs")
-
-
-// })
 
 //actualizar la foto del usuario
 
@@ -62,7 +63,7 @@ try{
 
 router.get("/all-users", isUserLogged, (req,res,next)=>{
 
-    User.find ()
+    User.find ({'_id': {$ne:req.session.user._id}})
     .select({profilePic:1, username:1, country: 1})
     .then((response)=>{
 
@@ -98,13 +99,31 @@ router.get("/all-users/:id", async (req,res,next)=>{
 
  try{
 
+    const sessionResponse = await User.findById(connectedUser._id)
+    console.log(sessionResponse)
+
+    const followedUsers = []
+    
+    sessionResponse.followed.forEach((x) => {
+
+       followedUsers.push(x.valueOf())
+        
+
+    })
+
+    console.log(followedUsers)
+
     const response = await User.findById (req.params.id)
     res.render("user/user-details.hbs", {
  
         
         oneUser:response,
-        connectedUser
+        connectedUser,
+        isFollowed:(followedUsers.indexOf(req.params.id) > -1) ? true: false
+
     })
+
+            console.log((followedUsers.indexOf(req.params.id) > -1) ? true: false)
 
  }catch(error){
 
@@ -138,12 +157,16 @@ router.post("/follow/:userId/:followId", isUserLogged, async (req, res, next) =>
   });
 
 
-
+ //GET renderisa la ista de los usuarios que seguimos
   router.get("/followed/:id",isUserLogged, async (req,res,next)=>{
+    console.log("AQUIMISMO ESTAMOS")
+
 
     try {
 
-        const followedUser = await User.findById(req.params.id).populate("followed")
+        console.log(req)
+        console.log(res)
+        const followedUser = await User.findById(req.session.user._id).populate("followed")
 
         res.render ("user/followed.hbs", {followedUser})
 
@@ -155,7 +178,60 @@ router.post("/follow/:userId/:followId", isUserLogged, async (req, res, next) =>
     }
 
   })
+
+
+  router.get("/followed/",isUserLogged, async (req,res,next)=>{
+    console.log("AQUIMISMO ESTAMOS")
+
+
+    try {
+
+        console.log(req)
+        console.log(res)
+        const followedUser = await User.findById(req.session.user._id).populate("followed")
+
+        res.render ("user/followed.hbs", {followedUser})
+
+
+
+    } catch(error){
+
+        next(error)
+    }
+
+  })
+
+
+ 
+router.get("/admin", isUserLogged,isModerator, async (req, res, next) => {
+    try {
+      const response = await User.findById(req.session.user._id)
+        .populate({
+          path: "followed",
+          options: { limit: 3 },
+        })
+        .populate({
+          path: "favoriteBand",
+          options: { limit: 3 },
+        });
   
+      res.render("user/admin.hbs", {
+        moderatorProfile: response,
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+
+
+
+
+
+
+    
+
+
     
 
 
