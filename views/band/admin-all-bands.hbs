@@ -1,51 +1,33 @@
+<div class="grid-container">
 
+  <h2>All Bands</h2>
 
+  {{#each this.allBands}}
 
-<div class= "grid-container">
+    <div class="band-card">
 
+      <img src="{{this.bandPic}}" alt="Band picture" height="300px" />
 
+      <p>Band Name: {{this.name}}</p>
+      <p>Genre: {{this.genre}}</p>
+      <p>Info: {{this.info}}</p>
 
-<h2>All Bands</h2>
+      <div class="button-wrapper">
 
+        <button>
+          <a href="/band-info/{{this._id}}"> See more</a>
+        </button>
 
-{{#each this.allBands}}
+        <form action="/all-bands/{{this._id}}/delete" method="post">
 
-<div class ="band-card">
+          <button>
+            Delete Band
+          </button>
 
-<img src="{{this.bandPic}}" alt="Band picture"  height="300px">
+        </form>
 
-<p>Band Name: {{this.name}}</p>
-<p>Genre: {{this.genre}}</p>
-<p>Info: {{this.info}}</p>
+      </div>
+    </div>
 
-<div class="button-wrapper">
-
-<button>
-    <a href="/band-info/{{this._id}}"> See more</a>
-</button>
-
-
-<form action= "/all-bands/{{this._id}}/delete"method="post">
-
-<button>
-    Delete Band
-</button>
-
-
-
-</form>
-
-</div>
-</div>
-
-{{/each}}
-</div>
-
-{{!-- <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil"> --}}
-
-
-
-
-
-
+  {{/each}}
 </div>

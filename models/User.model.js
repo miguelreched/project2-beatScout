@@ -29,35 +29,25 @@ const userSchema = new Schema(
     favoriteBand: [
       {
         type: Schema.Types.ObjectId,
-        ref:"Band"
+        ref: "Band",
       },
     ],
 
     followed: [
       {
         type: Schema.Types.ObjectId,
-        ref:"User"
-      },      
-
+        ref: "User",
+      },
     ],
 
     role: {
-
       type: String,
-      enum:["user", "moderator"],
-      default: "user"
-
+      enum: ["user", "moderator"],
+      default: "user",
     },
 
     profilePic: String, // url cloudinary
-
   },
-
-
-
-
-
-
 
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

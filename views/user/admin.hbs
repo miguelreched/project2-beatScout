@@ -1,67 +1,74 @@
-<div class= "grid-container profile">
+<div class="grid-container profile">
   <h2>This is your profile</h2>
 
-<div class="column-one">  
+  <div class="column-one">
 
-  <div id="profile-container">
-    <p>Name: {{this.moderatorProfile.username}}</p>
-    <p>Country: {{this.userProfile.country}}</p>
+    <div id="profile-container">
+      <p>Name: {{this.moderatorProfile.username}}</p>
+      <p>Country: {{this.userProfile.country}}</p>
 
-    {{#if this.moderatorProfile.profilePic}}
-      <img src="{{this.moderatorProfile.profilePic}}" alt="profile-pic" class="profile-pic">
-    {{/if}}
-
-    <form id="form-profile-picture" action="/profile-picture" method="post" enctype="multipart/form-data">
-      <label for="image">Profile Picture:</label>
-      <input type="file" name="image">
-
-      {{#if this.moderatorProfile.profilePic}} 
-        <button>Edit image</button>
-      {{else}}
-        <button>Upload image</button>
+      {{#if this.moderatorProfile.profilePic}}
+        <img
+          src="{{this.moderatorProfile.profilePic}}"
+          alt="profile-pic"
+          class="profile-pic"
+        />
       {{/if}}
-    </form>
+
+      <form
+        id="form-profile-picture"
+        action="/profile-picture"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="image">Profile Picture:</label>
+        <input type="file" name="image" />
+
+        {{#if this.moderatorProfile.profilePic}}
+          <button>Edit image</button>
+        {{else}}
+          <button>Upload image</button>
+        {{/if}}
+      </form>
+
+    </div>
 
   </div>
 
-</div>
-
-
-
-<div class="column-two"> 
-    <div class="my-followed-users"> 
+  <div class="column-two">
+    <div class="my-followed-users">
       {{#each this.moderatorProfile.followed}}
         <div class="user-i-followed">
-          <img src="{{this.profilePic}}" alt="Profile picture" class="small-profile-pic">
+          <img
+            src="{{this.profilePic}}"
+            alt="Profile picture"
+            class="small-profile-pic"
+          />
           <p><strong>{{this.username}}</strong> </p>
           <p>{{this.country}}</p>
         </div>
       {{/each}}
-        <button>
-            <a href="/all-users">edit community</a>
-        </button>
+      <button>
+        <a href="/all-users">edit community</a>
+      </button>
     </div>
 
-
-<div class="my-followed-bands"> 
+    <div class="my-followed-bands">
       {{#each this.moderatorProfile.favoriteBand}}
         <div class="user-i-followed">
-          <img src="{{this.bandPic}}" alt="Profile picture" class="small-profile-pic">
+          <img
+            src="{{this.bandPic}}"
+            alt="Profile picture"
+            class="small-profile-pic"
+          />
           <p><strong>{{this.name}}</strong> </p>
           <p>{{this.genre}}</p>
         </div>
       {{/each}}
       <button>
-          <a href="/all-bands">edit bands</a>
+        <a href="/all-bands">edit bands</a>
       </button>
     </div>
-</div>
+  </div>
 
 </div>
-
-
-
-
-
-
-

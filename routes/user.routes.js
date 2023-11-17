@@ -26,7 +26,6 @@ router.post("/", async (req, res, next) => {
 
   try {
     // validar que el usuario exista
-
     const foundUser = await User.findOne({ username });
 
     if (foundUser === null) {
@@ -37,7 +36,6 @@ router.post("/", async (req, res, next) => {
     }
 
     //validar que la contraseña sea la correcta
-
     const isPasswordValid = await bcrypt.compare(password, foundUser.password);
     console.log("isPasswordValid", isPasswordValid);
     if (isPasswordValid == false) {
@@ -50,49 +48,30 @@ router.post("/", async (req, res, next) => {
     //usuario validado
     // crear una sesión activa
 
-    const sessionInfo = { 
-
+    const sessionInfo = {
       _id: foundUser._id,
       email: foundUser.email,
       role: foundUser.role,
-      profilePic: foundUser.profilePic
-    }
+      profilePic: foundUser.profilePic,
+    };
 
-    
+    req.session.user = sessionInfo;
 
-      req.session.user = sessionInfo
-
-      console.log(req.session.user)
-      req.session.save(()=>{
-
-        res.redirect("/all-bands")
-
-
-      })
-
-  }catch(error){
-    
-    next (error)
+    console.log(req.session.user);
+    req.session.save(() => {
+      res.redirect("/all-bands");
+    });
+  } catch (error) {
+    next(error);
   }
-  
-
-  
 });
 
-
-
 // GET "/" => cierra sesion del usuario
-
-router.get("/logout", (req,res,next) =>{
-
-  req.session.destroy (()=>{
-
-    res.redirect("/")
-  })
-
-})
-
-
+router.get("/logout", (req, res, next) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
 
 //! Aqui empieza el signup
 
@@ -124,7 +103,6 @@ router.post("/signup", async (req, res, next) => {
   }
 
   try {
-
     const repeatedUsername = await User.findOne({ username });
     if (repeatedUsername !== null) {
       res.status(400).render("signup.hbs", {
@@ -140,47 +118,18 @@ router.post("/signup", async (req, res, next) => {
       });
       return;
     }
-  
 
     const salt = await bcrypt.genSalt(10);
     const cryptPassword = await bcrypt.hash(password, salt);
 
-    await User.create({ username, email, password: cryptPassword, country});
+    await User.create({ username, email, password: cryptPassword, country });
 
-    // opcionalmente pueden crear una sesión acá y luego redirijen a /home
-
-    // const sessionInfoTwo = { 
-
-    //   _id: foundUser._id,
-    //   email: foundUser.email,
-    //   role: foundUser.role
-    // }
-
-    
-
-    //   req.session.user = sessionInfo
-
-    //   req.session.save(()=>{
-
-    //     res.redirect("/home")
-
-
-    //   })
-
-
-
-
-
+    // opcionalmente pueden crear una sesión acá y luego redirijen a "/""
 
     res.redirect("/");
   } catch (err) {
     next(err);
   }
 });
-
-// // GET "/" => renderizar vista principal de profile de usuario
-// router.get("/profile", (req, res, next) => {
-//   res.render("user/profile.hbs");
-// });
 
 module.exports = router;

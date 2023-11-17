@@ -13,17 +13,15 @@ const cookieParser = require("cookie-parser");
 // https://www.npmjs.com/package/serve-favicon
 const favicon = require("serve-favicon");
 
-
-
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");
 
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
-const MONGO_URI = 
-process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/name-of-your-app";
+const MONGO_URI =
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/name-of-your-app";
 
 // Middleware configuration
 module.exports = (app) => {
@@ -43,28 +41,25 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   // Handles access to the favicon
-  app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  app.use(
+    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+  );
 
-  app.use(session({
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET, // esta es nuestra clave secreta para cifrar cookies
 
-    secret: process.env.SESSION_SECRET,// esta es nuestra clave secreta para cifrar cookies
+      resave: false, //no guarda la sesion si no hay nada modificado
 
-    resave: false, //no guarda la sesion si no hay nada modificado
+      saveUninitialized: false, // no guarda sesiones sin datos(sin login)
 
-    saveUninitialized:false, // no guarda sesiones sin datos(sin login)
-
-    cookie: {
-
-      maxAge: 1000 * 60 * 60 * 24 * 2 // tiempo de expiración de la cookie en la sesion
-
-    },
-    store: MongoStore.create({
-
-      mongoUrl: MONGO_URI,
-      ttl: 1000 * 60 * 60 * 24 * 2 // tiempo de expiración de sesion 
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 2, // tiempo de expiración de la cookie en la sesion
+      },
+      store: MongoStore.create({
+        mongoUrl: MONGO_URI,
+        ttl: 1000 * 60 * 60 * 24 * 2, // tiempo de expiración de sesion
+      }),
     })
-
-  }))
-
-
+  );
 };

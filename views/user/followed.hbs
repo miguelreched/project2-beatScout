@@ -4,16 +4,15 @@
   {{#each this.followedUser.followed}}
     <div>
 
-    <img src="{{this.profilePic}}" alt="Profile picture"  height="300px">
+      <img src="{{this.profilePic}}" alt="Profile picture" height="300px" />
 
       <p>{{this.username}}</p>
       <p>Country: {{this.country}}</p>
 
-    <button>
-    <a href="/all-users/{{this._id}}"> See more</a>
-    </button>
+      <button>
+        <a href="/all-users/{{this._id}}"> See more</a>
+      </button>
     </div>
   {{/each}}
-
 
 </div>

@@ -12,16 +12,11 @@ const {
 } = require("../middlewares/user.middleware.js");
 
 // GET /"add-bands" nos lleva a añadir  bandas a nuestra lista
-// router.get("/add-bands", (req, res, next) => {
-//   res.render("band/add-bands.hbs");
-// });
-
 router.get("/add-bands", isUserLogged, (req, res, next) => {
   res.render("band/add-bands.hbs");
 });
 
 // POST "/add-bands" => recibir los datos del formulario y crear banda en la DB
-
 router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
   console.log(req.body);
   // console.log(req.file.path)
@@ -58,7 +53,6 @@ router.post("/add-bands", uploader.single("image"), async (req, res, next) => {
 });
 
 //GET => ver todas las bandas en los usuarios en la web
-
 router.get("/all-bands", isUserLogged, async (req, res, next) => {
   try {
     const response = await Band.find();
@@ -81,15 +75,16 @@ router.get("/band-info/:id", async (req, res, next) => {
   console.log(req.params);
 
   const connectedUser = req.session.user;
-  
+
   try {
-    const comment = await Comment.find({band: req.params.id}).populate("user")
+    const comment = await Comment.find({ band: req.params.id }).populate(
+      "user"
+    );
     const response = await Band.findById(req.params.id);
     res.render("band/band-info.hbs", {
       oneBand: response,
       connectedUser,
-      comment
-      
+      comment,
     });
   } catch (error) {
     next(error);
@@ -97,7 +92,6 @@ router.get("/band-info/:id", async (req, res, next) => {
 });
 
 //POST seguir a una banda en concreto y que se imprima en la DB
-
 router.post(
   "/my-bands/:userId/:myBandId",
   isUserLogged,
@@ -143,7 +137,6 @@ router.get("/my-bands/:id", isUserLogged, async (req, res, next) => {
 });
 
 //POST  eliminar banda
-
 router.post(
   "/all-bands/:bandId/delete",
   isUserLogged,
@@ -160,28 +153,7 @@ router.post(
   }
 );
 
-// POST crear calificación de vándalas
-
-// router.post("/rating-create/:id", async (req, res, next) => {
-//   const { rating } = req.body;
-//   const bandId = req.params.id;
-//   const userId = req.session.user._id;
-
-//   const newRating = {
-//     rating,
-//     user: userId,
-//     band: bandId,
-//   };
-
-//   try {
-//     await Rating.create(newRating);
-
-//     res.redirect(`/band-info/${bandId}`);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
+// POST crear comentario de vándalas
 router.post("/comment-create/:id", async (req, res, next) => {
   const { comment, rating } = req.body;
   const band = req.params.id;
@@ -190,7 +162,7 @@ router.post("/comment-create/:id", async (req, res, next) => {
     band,
     user,
     comment,
-    rating
+    rating,
   };
 
   try {
@@ -204,7 +176,5 @@ router.post("/comment-create/:id", async (req, res, next) => {
     next(err);
   }
 });
-
-
 
 module.exports = router;

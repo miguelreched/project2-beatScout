@@ -1,54 +1,48 @@
-
-
-
-
-
 <body class="login-page">
 
-    <div id="main-container">
+  <div id="main-container">
 
-        <a href="/">
+    <a href="/">
 
-        <img src="images/beat-scout-logo.jpg" alt="Logo" id="logo" width="600px">
+      <img
+        src="images/beat-scout-logo.jpg"
+        alt="Logo"
+        id="logo"
+        width="600px"
+      />
 
-         </a>
+    </a>
 
-        <div id="inside-container">
+    <div id="inside-container">
 
-            <img src="images/login-image.jpg" alt="signup-image" width="1000px">
+      <img src="images/login-image.jpg" alt="signup-image" width="1000px" />
 
-            <form id="login-form" action="/" method="post">
-            <label for="username">username:</label>
-            <input type="text" name="username"  id="username">
-            <br>
+      <form id="login-form" action="/" method="post">
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username" />
+        <br />
 
-            <label for="password">password:</label>
-            <input type="password" name="password" id="password" >
-            <br>
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password" />
+        <br />
 
-            <button type="submit">Log in</button>
+        <button type="submit">Log in</button>
 
-            {{#if this.errMess}}
-             <p class="error">{{this.errMess}}</p>
-            {{/if}}
+        {{#if this.errMess}}
+          <p class="error">{{this.errMess}}</p>
+        {{/if}}
 
-                <p id="signup-link">
+        <p id="signup-link">
 
-                <span style="color: black;">Don’t you have an account?</span>
-                <strong><a href="/signup">Sign up</a></strong>
+          <span style="color: black;">Don’t you have an account?</span>
+          <strong><a href="/signup">Sign up</a></strong>
 
-                 </p>
-    
-        </form>
+        </p>
 
-      
-
-
-
-
-        </div>
+      </form>
 
     </div>
 
-</body>
+  </div>
 
+</body>

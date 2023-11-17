@@ -1,104 +1,83 @@
 <div>
 
+  <h2 id="add-bands-header">Add your favorite band</h2>
 
-
-
-<h2 id="add-bands-header">Add your favorite band</h2>
-
-<body>
-  
+  <body>
 
     <div id="add-bands-container">
-    
-        <form id="add-bands-form" class="form-grid" action ="/add-bands"  method="post" enctype="multipart/form-data">
 
-            <label for="bandName" style="width: 100px;">Band name:</label>
-            <input type="text" name="bandName" id="bandName">
-            <br>
+      <form
+        id="add-bands-form"
+        class="form-grid"
+        action="/add-bands"
+        method="post"
+        enctype="multipart/form-data"
+      >
 
-            <label for="genre"style="width: 100px;">Genre:</label>
-            <select name="genre" id="genre" >
-              <option value="default"selected></option>
-              <option value="Rock">Rock</option>
-              <option value="Punk">Punk</option>
-              <option value="Pop">Pop</option>
-              <option value="Funk">Funk</option>
-              <option value="Disco">Disco</option>
-              <option value="R&B">R&B</option>
-              <option value="Hip-Hop">Hip-Hop</option>
-              <option value="Trip-Hop">Trip-Hop</option>
-              <option value="Electronic">Electronic</option>
-              <option value="Indie">Indie</option>
-              <option value="Dance">Dance</option>
-              <option value="Flamenco">Flamenco</option>
-              <option value="Reggaeton">Reggaeton</option>
+        <label for="bandName" style="width: 100px;">Band name:</label>
+        <input type="text" name="bandName" id="bandName" />
+        <br />
 
-            </select>
+        <label for="genre" style="width: 100px;">Genre:</label>
+        <select name="genre" id="genre">
+          <option value="default" selected></option>
+          <option value="Rock">Rock</option>
+          <option value="Punk">Punk</option>
+          <option value="Pop">Pop</option>
+          <option value="Funk">Funk</option>
+          <option value="Disco">Disco</option>
+          <option value="R&B">R&B</option>
+          <option value="Hip-Hop">Hip-Hop</option>
+          <option value="Trip-Hop">Trip-Hop</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Indie">Indie</option>
+          <option value="Dance">Dance</option>
+          <option value="Flamenco">Flamenco</option>
+          <option value="Reggaeton">Reggaeton</option>
 
-          <br>
+        </select>
 
-            <label for="info">Band Info:</label>
-            <input type="text" name="info" id="info" >
-            <br>
+        <br />
 
-             <label for="instagramUrl">Instagram: </label>
-            <input type="text" name="instagramUrl" id="instagramUrl" >
-            <br>
+        <label for="info">Band Info:</label>
+        <input type="text" name="info" id="info" />
+        <br />
 
-               <label for="facebookUrl">Facebook: </label>
-            <input type="text" name="facebookUrl" id="facebookUrl" >
-            <br>
+        <label for="instagramUrl">Instagram: </label>
+        <input type="text" name="instagramUrl" id="instagramUrl" />
+        <br />
 
-               <label for="spotifyUrl">Spotify: </label>
-            <input type="text" name="spotifyUrl" id="spotifyUrl">
-            <br>
+        <label for="facebookUrl">Facebook: </label>
+        <input type="text" name="facebookUrl" id="facebookUrl" />
+        <br />
 
-        
+        <label for="spotifyUrl">Spotify: </label>
+        <input type="text" name="spotifyUrl" id="spotifyUrl" />
+        <br />
 
+        <br />
 
-     
-        <br>
-        
         <label for="image">Band Picture</label>
-        <input type="file" name="image" >
-            
+        <input type="file" name="image" />
+
         <button type="submit">Submit</button>
-        
-        <br>
-        <br>
-        <br>
-            <br>
 
+        <br />
+        <br />
+        <br />
+        <br />
 
+        {{#if this.errMess}}
 
-            {{#if this.errMess}}
+          <p class="error">{{this.errMess}}</p>
 
-<p class="error">{{this.errMess}}</p>
+        {{/if}}
 
-{{/if}}
+      </form>
 
-    
-        </form>
-
-        <img src="images/Blog_home_body2_EDIT 1.png" alt="">
-
-        
-
-     
+      <img src="images/Blog_home_body2_EDIT 1.png" alt="" />
 
     </div>
-    </body>
-
- 
-
-
-
-
-
-
-
-
-
-
+  </body>
 
 </div>

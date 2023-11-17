@@ -1,30 +1,24 @@
 <div>
 
-<h2>Gurú's details</h2>
+  <h2>Gurú's details</h2>
 
+  <img src="{{this.oneUser.profilePic}}" alt="Profile picture" height="300px" />
 
-<img src="{{this.oneUser.profilePic}}" alt="Profile picture"  height="300px">
+  <h2>{{this.oneUser.username}}</h2>
 
-<h2>{{this.oneUser.username}}</h2>
+  <p>Country: {{this.oneUser.country}}</p>
 
-
-
-
-<p>Country: {{this.oneUser.country}}</p>
-
-
-<form action="/follow/{{this.connectedUser._id}}/{{this.oneUser._id}}" method="post">
+  <form
+    action="/follow/{{this.connectedUser._id}}/{{this.oneUser._id}}"
+    method="post"
+  >
 
     {{#if this.isFollowed}}
-    <button disabled class="btn-user-favorites"> Follow</button> 
-{{else}}
-    <button class="btn-user-favorites"> Follow</button> 
+      <button disabled class="btn-user-favorites"> Follow</button>
+    {{else}}
+      <button class="btn-user-favorites"> Follow</button>
 
+    {{/if}}
+  </form>
 
-{{/if}}
-    </form>
-
-    </div>
-
-
-<div>
+</div>

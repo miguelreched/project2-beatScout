@@ -61,7 +61,6 @@ router.post(
 );
 
 //GET => ver todos los usuarios en la web
-
 router.get("/all-users", isUserLogged, async (req, res, next) => {
   try {
     const response = await User.find({
@@ -83,7 +82,6 @@ router.get("/all-users", isUserLogged, async (req, res, next) => {
 });
 
 //GET => ver detalle de un usuario concreto
-
 router.get("/all-users/:id", async (req, res, next) => {
   console.log(req.params);
 
@@ -116,7 +114,6 @@ router.get("/all-users/:id", async (req, res, next) => {
 });
 
 //POST=> seguir a un usuario en concreto que se imprima en la DB de users
-
 router.post(
   "/follow/:userId/:followId",
   isUserLogged,
@@ -169,27 +166,19 @@ router.get("/followed/", isUserLogged, async (req, res, next) => {
 });
 
 // POST eliminar user
-router.post ("/all-users/:userId/delete", isUserLogged ,isModerator, (req, res, next) =>{
-
+router.post(
+  "/all-users/:userId/delete",
+  isUserLogged,
+  isModerator,
+  (req, res, next) => {
     User.findByIdAndDelete(req.params.userId)
-    .then(()=>{
-
-        res.redirect("/all-users")
-
-
-    }).catch((error)=>{
-
-        next(error)
-    })
-
-
-
-
-
-})
-
-
-
-
+      .then(() => {
+        res.redirect("/all-users");
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
 
 module.exports = router;

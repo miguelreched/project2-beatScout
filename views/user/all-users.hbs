@@ -1,41 +1,21 @@
 <div class="grid-container">
 
+  <h2>Discover our music gurús</h2>
 
+  {{#each this.allUsers}}
 
+    <div class="user-profile-container">
 
-<h2>Discover our music gurús</h2>
+      <img src="{{this.profilePic}}" alt="Profile picture" height="300px" />
+      <p>Name: {{this.username}}</p>
+      <p>Country: {{this.country}}</p>
 
-{{#each this.allUsers}}
+      <button>
+        <a href="/all-users/{{this._id}}"> See more</a>
+      </button>
 
+    </div>
 
-<div class="user-profile-container">
-
-
-<img src="{{this.profilePic}}" alt="Profile picture"  height="300px">
-<p>Name: {{this.username}}</p>
-<p>Country: {{this.country}}</p>
-
-<button>
-    <a href="/all-users/{{this._id}}"> See more</a>
-</button>
-
-
-
-
-
-</div>
-
-
-
-{{/each}}
-
-
-
-
-
-
-
-
-
+  {{/each}}
 
 </div>
